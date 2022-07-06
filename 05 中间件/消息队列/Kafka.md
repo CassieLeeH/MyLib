@@ -322,5 +322,26 @@ Producer启动后生产的每个消息集合都是经GZIP压缩过的，故而�
 
 而在压缩比方面，zstd > LZ4 > GZIP > Snappy。
 
+## Java生产者如何管理TCP连接
 
+Kafka采用TCP协议作为所有请求通信的底层协议：TCP有多路复用请求和同时轮询多个连接的能力。
+
+Java Producer端管理TCP连接的方式是：
+
+1. KafkaProducer实例创建时启动Sender线程，从而创建与bootstrap.servers中所有Broker的TCP连接。
+2. KafkaProducer实例首次更新元数据信息之后，还会再次创建与集群中所有Broker的TCP连接。
+3. 如果Producer端发送消息到某台Broker时发现没有与该Broker的TCP连接，那么也会立即创建连接。
+4. 如果设置Producer端connections.max.idle.ms参数大于0，则步骤1中创建的TCP连接会被自动关闭；如果设置该参数=-1，那么步骤1中创建的TCP连接将无法被关闭，从而成为“僵尸”连接。
+
+Producer端关闭TCP连接的方式有两种：**一种是用户主动关闭；一种是Kafka自动关闭**。
+
+
+
+## 幂等生产者和事务生产者
+
+消息交付可靠性保障：Kafka对Producer和Consumer要处理的消息提供什么样的承诺。常见的承诺有以下三种：
+
+- 最多一次（at most once）：消息可能会丢失，但绝不会被重复发送。
+- 至少一次（at least once）：消息不会丢失，但有可能被重复发送。**默认模式**。
+- 精确一次（exactly once）：消息不会丢失，也不会被重复发送。
 
