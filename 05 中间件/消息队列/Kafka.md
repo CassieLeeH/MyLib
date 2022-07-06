@@ -214,7 +214,7 @@ ZooKeeper是一个分布式协调框架，负责协调管理并保存Kafka集群
 
 使用自带的命令`kafka-configs`来修改Topic级别参数:
 
-```
+```java
 bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name transaction --alter --add-config max.message.bytes=10485760
 ```
 
@@ -238,7 +238,7 @@ $> bin/kafka-server-start.sh config/server.properties
 **操作系统参数：**
 
 - 文件描述符限制     ulimit -n 设置成超大的数，比如：ulimit -n 1000000
-- 文件系统类型    生产环境最好还是使用XFS
+- 文件系统类型    生产环境最好还是使用**XFS**
 - Swappiness     建议swappniess配置成一个接近0但不为0的值，比如1
 - 提交时间    默认是5秒，可以适当调高
 
@@ -262,5 +262,65 @@ Kafka的消息组织方式实际上是三级结构：主题-分区-消息。主�
 
 
 
-**分区策略**是决定生产者将消息发送到哪个分区的算法
+**分区策略**是决定生产者将消息发送到哪个分区的算法。Kafka提供了默认的分区策略，也支持自定义。
+
+自定义策略：
+
+如果要自定义分区策略，需要显式地配置生产者端的参数`partitioner.class`。
+
+在编写生产者程序时，编写一个具体的类实现`org.apache.kafka.clients.producer.Partitioner`接口。这个接口也很简单，只定义了两个方法：`partition()`和`close()`，通常你只需要实现最重要的partition方法。我们来看看这个方法的方法签名：
+
+```java
+int partition(String topic, Object key, byte[] keyBytes, Object value, byte[] valueBytes, Cluster cluster);
+```
+
+
+
+**常见分区策略：**
+
+- 轮询策略：挨个轮流顺序分配，默认分配方式。
+- 随机策略：随意地将消息放置到任意一个分区上。（想出这个方法的人可以和猴子排序做个pk了）
+- 按消息键保存策略：把消息分类，设置不同的消息建，然后顺序存放在不同的分区中。
+
+```java
+//随机策略
+List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
+return ThreadLocalRandom.current().nextInt(partitions.size());
+
+//按消息键保存策略
+List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
+return Math.abs(key.hashCode()) % partitions.size();
+```
+
+
+
+## 生产者压缩算法
+
+压缩（compression）用时间去换空间的经典trade-off思想，用CPU时间去换磁盘空间或网络I/O传输量，希望以较小的CPU开销带来更少的磁盘占用或更少的网络I/O传输。故**Producer压缩，Broker保持，Consumer解压缩**。
+
+生产者程序中**配置compression.type参数即表示启用指定类型的压缩算法**
+
+比如下面这段程序代码展示了如何构建一个开启GZIP的Producer对象：
+
+```java
+ Properties props = new Properties();
+ props.put("bootstrap.servers", "localhost:9092");
+ props.put("acks", "all");
+ props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+ props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+ // 表明该Producer的压缩算法使用的是GZIP,开启GZIP压缩
+ props.put("compression.type", "gzip");
+ 
+ Producer<String, String> producer = new KafkaProducer<>(props);
+```
+
+Producer启动后生产的每个消息集合都是经GZIP压缩过的，故而能很好地节省网络传输带宽以及Kafka Broker端的磁盘占用。
+
+**压缩算法性能对比：**
+
+在吞吐量方面：LZ4 > Snappy > zstd和GZIP；
+
+而在压缩比方面，zstd > LZ4 > GZIP > Snappy。
+
+
 
