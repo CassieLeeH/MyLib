@@ -63,3 +63,5 @@
 功能性需求：发消息、存消息、消费消息
 
 非功能性需求：高性能、高可用、高扩展
+
+![image-20220706092851467](C:\Users\l50025929\AppData\Roaming\Typora\typora-user-images\image-20220706092851467.png)
