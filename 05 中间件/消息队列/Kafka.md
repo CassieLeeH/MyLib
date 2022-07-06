@@ -218,6 +218,8 @@ ZooKeeper是一个分布式协调框架，负责协调管理并保存Kafka集群
 bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name transaction --alter --add-config max.message.bytes=10485760
 ```
 
+
+
 **JVM参数：**
 
 Kafka服务器端代码是用Scala语言编写的，编译成Class文件在JVM上运行，因此JVM参数设置对于Kafka集群很重要。
@@ -230,6 +232,8 @@ $> export KAFKA_HEAP_OPTS=--Xms6g  --Xmx6g
 $> export KAFKA_JVM_PERFORMANCE_OPTS= -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true
 $> bin/kafka-server-start.sh config/server.properties
 ```
+
+
 
 **操作系统参数：**
 
