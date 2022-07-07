@@ -344,4 +344,31 @@ Producer端关闭TCP连接的方式有两种：**一种是用户主动关闭；�
 - 最多一次（at most once）：消息可能会丢失，但绝不会被重复发送。
 - 至少一次（at least once）：消息不会丢失，但有可能被重复发送。**默认模式**。
 - 精确一次（exactly once）：消息不会丢失，也不会被重复发送。
+### 幂等性Producer
+
+幂等性Producer只能保证单分区上的幂等性，即一个幂等性Producer能够保证某个主题的一个分区上不出现重复消息，它无法实现多个分区的幂等性。其次，它只能实现单会话上的幂等性，不能实现跨会话的幂等性。这里的会话，你可以理解为Producer进程的一次运行。当你**重启了Producer进程之后，这种幂等性保证就丧失了**。
+
+### 事务型Producer
+
+事务型Producer能够保证将**消息原子性地写入到多个分区中。这批消息要么全部写入成功，要么全部失败。**另外，事务型Producer也不惧进程的重启。Producer重启回来后，Kafka依然保证它们发送消息的精确一次处理。
+
+设置事务型Producer的方法也很简单，满足两个要求即可：
+
+- 和幂等性Producer一样，开启enable.idempotence = true。
+- 设置Producer端参数transactional. id。最好为其设置一个有意义的名字。
+
+此外，你还需要在Producer代码中做一些调整，如这段代码所示：
+
+```java
+producer.initTransactions();
+try {
+            producer.beginTransaction();
+            producer.send(record1);
+            producer.send(record2);
+            producer.commitTransaction();
+} catch (KafkaException e) {
+            producer.abortTransaction();
+}
+```
+
 
