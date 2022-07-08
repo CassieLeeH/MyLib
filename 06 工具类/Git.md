@@ -1,3 +1,5 @@
+
+![git_flow](https://bubuzou.oss-cn-shenzhen.aliyuncs.com/blog/2019/git_all_01.png)
 ## 创建版本库
 
 - `git clone url` 克隆远程版本库
