@@ -1,15 +1,4 @@
-- [GoWeb](#goweb)
-- [RESTful API](#restful-api)
-- [POSTMAN](#postman)
-- [Gin路由](#gin路由)
-- [Gin渲染](#gin渲染)
-  - [http渲染 template](#http渲染-template)
-    - [Go语言标准库之http/template](#go语言标准库之httptemplate)
-    - [模板与渲染](#模板与渲染)
-    - [Go语言的模板引擎](#go语言的模板引擎)
-    - [模板引擎的使用](#模板引擎的使用)
-- [GORM](#gorm)
-- [如何定位判断是前端的bug还是后端的bug？](#如何定位判断是前端的bug还是后端的bug)
+
 # GoWeb
 
 Import（
