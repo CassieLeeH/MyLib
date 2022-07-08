@@ -8,7 +8,7 @@
 ## 配置
 
 - `git config --global user.name 'chengcp'` 配置`global`级别的用户名
-- `git config --global user.email '1326895569@qq.com'` 配置`global`级别的邮箱
+- `git config --global user.email 'xxxxxxxxx@qq.com'` 配置`global`级别的邮箱
 - `git config --global -l` 查看`global`级别的配置列表
 - `git config --global --unset user.name` 删除用户名
 - `git config --global alias.last 'log -1 HEAD'` 配置`last`别名，使用`git last`将显示最近的一次提交记录
