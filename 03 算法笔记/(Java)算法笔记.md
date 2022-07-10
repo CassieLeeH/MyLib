@@ -459,6 +459,10 @@ func levelOrder(root *TreeNode) [][]int {
 
 ## 图
 
+图的本质是高级多叉树，适用于树的DFS/BFS遍历算法，常用邻接表和邻接矩阵来实现。
+
+<img src="assets/image-20220710215627513.png" alt="image-20220710215627513" style="zoom: 33%;" />
+
 ### 拓扑排列
 
 ### 二分图判定
