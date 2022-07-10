@@ -91,19 +91,27 @@ func ShellSort(nums []int) []int {
 
 排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。 
 
-```plsql
-func bubbleSort(nums []int) []int {
-	n := len(nums)
-	for i := 0; i < n-1; i++ {
-		for j := 0; j < n-1-i; j++ {
-			if nums[j] > nums[j+1] {
-				temp := nums[j+1]
-				nums[j+1] = nums[j]
-				nums[j] = temp
-			}
-		}
-	}
-	return nums
+```java
+class Solution {
+    public int[] sortArray(int[] nums) {
+        if(nums == null){
+            return null;
+        }
+        if(nums.length < 2){
+            return nums;
+        }
+        int temp = 0;
+        for(int i = 0;i < nums.length - 1; i++){
+            for(int j = 0; j < nums.length - i - 1; j++){
+                if( nums[j] > nums[j+1]){
+                    temp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = temp;
+                }
+            }
+        }
+        return nums;
+    }
 }
 ```
 
