@@ -93,7 +93,7 @@ func ShellSort(nums []int) []int {
 
 ```java
 class Solution {
-    public int[] sortArray(int[] nums) {
+    public int[] bubbleSortOpt(int[] nums) {
         if(nums == null){
             return null;
         }
