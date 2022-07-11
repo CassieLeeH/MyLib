@@ -294,32 +294,31 @@ for i:=0;i<len(diff);i++{
 
 二分查找的前提是数组有序，难点在于定四个区间点。
 
-```go
-func search(nums []int,target int) int{
-    low,high := 0, len(nums)-1
-    for low<=high{
-        mid := (high - low)/2 +low
-        if nums[mid] == target{
-            //找到，返回下标
-            return mid
-        }else if nums[mid]>target{
-            //大于目标值，找左区间
-            high = mid - 1
-        }else{
-            //小于目标值，找右区间
-            low = mid + 1
-        }
-    }
+```java
+public int BinarySearch(int[] nums,int target){
+   	 int high = nums.length - 1;
+   	 int low = 0;
+     while(low <= high){
+       int mid = (high - low)/2 + low;
+       if(nums[mid] == target){
+         //找到了
+         return mid;
+       }else if(nums[mid] > target ){
+         //大于目标值，找左区间
+         high = mid - 1;
+       }else{
+         //小于目标值，找右区间
+         low = mid + 1;
+       }
+     }
     //没找到
-    return -1
+    return -1;
 }
 ```
 
 ### 滑动窗口
 
 ![img](assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
-
-### 
 
 ## 队列/栈
 
@@ -459,9 +458,65 @@ func levelOrder(root *TreeNode) [][]int {
 
 ## 图
 
+### 图的基础
+
 图的本质是高级多叉树，适用于树的DFS/BFS遍历算法，常用邻接表和邻接矩阵来实现。
 
 <img src="assets/image-20220710215627513.png" alt="image-20220710215627513" style="zoom: 33%;" />
+
+```java
+//图节点的逻辑结构
+class Vertex{
+  int id；
+  Vertrx[] neighbors;
+}
+//⽤邻接表和邻接矩阵的存储⽅式如下：
+// 邻接表: 空间占用少；无法快速判断两个节点是否相邻；
+// graph[x] 存储 x 的所有邻居节点 
+List<Integer>[] graph;
+//邻接矩阵: 更多的存储空间；可以快速判断两个节点是否相邻；
+//matrix[x][y] 记录 x 是否有⼀条指向 y 的边
+//如果是有向加权图则用int型
+boolean[][] matrix;
+```
+
+**遍历有向无环图：**
+
+```java
+class Solution {
+    //记录所有路径
+    List<List<Integer>> res = new LinkedList<>();
+
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        //维护递归过程中经过的路径
+        LinkedList<Integer> path = new LinkedList<>();
+        traverse(graph, 0, path);
+        return res;
+    }
+
+    //图的遍历框架
+    void traverse(int[][] graph, int s, LinkedList<Integer> path){
+        //添加节点s到路径
+        path.addLast(s);
+
+        int n = graph.length;
+        if(s == n-1 ){
+            res.add(new LinkedList<>(path));
+            path.removeLast();
+            return;
+        }
+        //递归每个相邻节点
+        for(int v : graph[s]){
+            traverse(graph, v, path);
+        }
+        //从路径移出节点s
+        path.removeLast();
+
+    }
+}
+```
+
+
 
 ### 拓扑排列
 
