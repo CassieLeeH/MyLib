@@ -1,0 +1,126 @@
+{
+  "main": {
+    "id": "ea4166adbee0f861",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc3164892aa726b9",
+        "type": "leaf",
+        "dimension": 73.80952380952381,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "00 八股文集中营/基础 操作系统.md",
+            "mode": "source",
+            "source": false
+          }
+        },
+        "group": "b4b38b2831d3cf9a"
+      },
+      {
+        "id": "19b938132e7f09f3",
+        "type": "leaf",
+        "dimension": 26.190476190476193,
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "00 八股文集中营/基础 操作系统.md"
+          }
+        },
+        "group": "b4b38b2831d3cf9a"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b264c2fc1112a429",
+    "type": "split",
+    "children": [
+      {
+        "id": "8107b9ff1f0e7e0f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "adaedfbe5b088b3f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "dfaf77fb2a87d423",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 293
+  },
+  "right": {
+    "id": "0e31dc5d387be3be",
+    "type": "split",
+    "children": [
+      {
+        "id": "30e15a999de8c82c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c720a5d73741198c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00 八股文集中营/基础 操作系统.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ba7555993a1e02a8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00 八股文集中营/基础 操作系统.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "fc3164892aa726b9",
+  "lastOpenFiles": [
+    "00 八股文集中营/基础 操作系统.md",
+    "00 八股文集中营/基础 计算机网络.md",
+    "00 八股文集中营/基础 数据结构.md",
+    "00 八股文集中营/数据库 MySQL.md",
+    "01 基础知识/操作系统.md",
+    "01 基础知识/计算机网络.md",
+    "01 基础知识/数据结构.md",
+    "02 编程语言/Java Everything/Java.md",
+    "01 基础知识/设计模式/创建型.md"
+  ]
+}
