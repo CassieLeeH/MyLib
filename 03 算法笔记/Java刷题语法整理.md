@@ -97,8 +97,71 @@ for(String str:strings){
 }
 ```
 
+# Math类方法整理
+```java
+import java.math.*;
+ 
+public class Test {
+    public static void main(String[] args){
+        //返回a的绝对值
+        double a = -5.0;
+        double abs = Math.abs(a);
+        System.out.println("a的绝对值:"+abs);
+ 
+        //返回两个数中的最大值、最小值
+        double b =10.0;
+        double max = Math.max(a,b);
+        double min = Math.min(a,b);
+        System.out.println("a，b的最大值为："+max);
+        System.out.println("a，b的最小值为："+min);
+ 
+        //产生一个0-1之间的随机数（包括0，不包括1）
+        double random = Math.random();
+        System.out.println("产生一个0-1之间的随机数:"+random);
+ 
+        //返回a的3次幂, pow(a,2)就是平方
+        double pow = Math.pow(a,3);
+        System.out.println("a的3次幂为："+pow);
+ 
+        //返回b的平方根
+        double sqrt = Math.sqrt(b);
+        System.out.println("b的平方根为："+sqrt);
+ 
+        //返回c的对数
+        double c = 8.0;
+        double log = Math.log(c);
+        System.out.println("c的对数为："+log);
+ 
+        //返回d的正弦值
+        double d = 0.5;
+        double sin = Math.sin(d);
+        System.out.println("d的正弦值为："+sin);
+ 
+        //返回d的反正弦值
+        double asin = Math.asin(d);
+        System.out.println("d的反正弦值为："+asin);
+ 
+        //返回大于d的最小整数，并将该整数转化为double数据
+        double ceil = Math.ceil(d);
+        System.out.println("大于d的最小整数为："+ceil);
+ 
+        //返回小于d的最大整数，并将该整数转化为double数据
+        double floor = Math.floor(d);
+        System.out.println("小于d的最大整数为："+floor);
+ 
+        //返回某个数的四舍五入的值
+        System.out.println(Math.round(15.6));
+        System.out.println(Math.round(15.4));
+        System.out.println(Math.round(-15.5));
+        System.out.println(Math.round(-15.6));
+        /*
+        如果该数为非负数，小数大于或等于0.5入，小于0.5舍
+        如果该数为负数，小数大于0.5入，小于或等于0.5舍
+         */
+    }
+}
 
-
+```
 
 oj题解收集，学习java解题风格
 

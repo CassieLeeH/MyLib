@@ -1,3 +1,5 @@
 {
-  "translucency": true
+  "translucency": false,
+  "theme": "moonstone",
+  "baseFontSize": 14
 }

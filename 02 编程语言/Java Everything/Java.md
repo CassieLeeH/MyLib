@@ -1,8 +1,7 @@
 
 
 ## 基本概念
-
-<img src="assets/image-20220713195802793.png" alt="image-20220713195802793" style="zoom:67%;" />
+![image-20210923091544110](assets/image-20220713195802793.png)
 
 ### JRE和JDK
 

@@ -6,7 +6,7 @@
       {
         "id": "fc3164892aa726b9",
         "type": "leaf",
-        "dimension": 73.80952380952381,
+        "dimension": 72.42647058823529,
         "state": {
           "type": "markdown",
           "state": {
@@ -20,7 +20,7 @@
       {
         "id": "19b938132e7f09f3",
         "type": "leaf",
-        "dimension": 26.190476190476193,
+        "dimension": 27.573529411764707,
         "state": {
           "type": "outline",
           "state": {
@@ -113,14 +113,15 @@
   },
   "active": "fc3164892aa726b9",
   "lastOpenFiles": [
-    "00 八股文集中营/基础 操作系统.md",
     "00 八股文集中营/基础 计算机网络.md",
-    "00 八股文集中营/基础 数据结构.md",
     "00 八股文集中营/数据库 MySQL.md",
-    "01 基础知识/操作系统.md",
-    "01 基础知识/计算机网络.md",
-    "01 基础知识/数据结构.md",
-    "02 编程语言/Java Everything/Java.md",
-    "01 基础知识/设计模式/创建型.md"
+    "00 八股文集中营/基础 数据结构.md",
+    "02 编程语言/Golang Everything/并发.md",
+    "02 编程语言/Golang Everything/GoWeb Gin Gorm.md",
+    "02 编程语言/Golang Everything/垃圾回收 异常 接口 函数 方法.md",
+    "02 编程语言/Golang Everything/基础与数据类型.md",
+    "00 八股文集中营/Java 集合Collection.md",
+    "03 算法笔记/Java刷题语法整理.md",
+    "00 八股文集中营/Java 基础.md"
   ]
 }
