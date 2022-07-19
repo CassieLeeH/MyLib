@@ -1,5 +1,7 @@
 {
   "legacyEditor": false,
   "livePreview": true,
-  "defaultViewMode": "source"
+  "defaultViewMode": "source",
+  "promptDelete": false,
+  "communityThemeSortOrder": "download"
 }

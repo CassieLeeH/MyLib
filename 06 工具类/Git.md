@@ -6,7 +6,6 @@
 - `git init` 初始化本地版本库
 
 
-
 ## 配置
 
 - `git config --global user.name 'chengcp'` 配置`global`级别的用户名
