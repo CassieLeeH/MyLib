@@ -6,6 +6,8 @@
 - `git init` 初始化本地版本库
 
 
+git log --author='XXXX' --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
+
 ## 配置
 
 - `git config --global user.name 'chengcp'` 配置`global`级别的用户名
