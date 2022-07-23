@@ -3,5 +3,6 @@
   "livePreview": true,
   "defaultViewMode": "source",
   "promptDelete": false,
-  "communityThemeSortOrder": "download"
+  "communityThemeSortOrder": "download",
+  "readableLineLength": false
 }
