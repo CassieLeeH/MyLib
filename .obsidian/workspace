@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "00 八股文集中营/Java JVM.md",
+            "file": "00 八股文集中营/数据库 Redis.md",
             "mode": "source",
             "source": false
           }
@@ -24,7 +24,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "00 八股文集中营/Java JVM.md"
+            "file": "00 八股文集中营/数据库 Redis.md"
           }
         },
         "group": "b4b38b2831d3cf9a"
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00 八股文集中营/Java JVM.md",
+                "file": "00 八股文集中营/数据库 Redis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00 八股文集中营/Java JVM.md"
+                "file": "00 八股文集中营/数据库 Redis.md"
               }
             }
           }
@@ -113,15 +113,15 @@
   },
   "active": "fc3164892aa726b9",
   "lastOpenFiles": [
-    "02 编程语言/Java Everything/Java 基础核心总结.pdf",
     "00 八股文集中营/Java 多线程.md",
-    "00 八股文集中营/Java JVM.md",
     "00 八股文集中营/Java 基础.md",
-    "00 八股文集中营/数据库 Redis.md",
-    "00 八股文集中营/数据库 MySQL.md",
+    "00 八股文集中营/Java 集合.md",
     "00 八股文集中营/设计模式.md",
-    "00 八股文集中营/基础 操作系统.md",
-    "03 算法笔记/(Java)算法笔记.md",
+    "01 基础知识/设计模式/创建型.md",
+    "01 基础知识/设计模式/行为型.md",
+    "01 基础知识/操作系统.md",
+    "01 基础知识/计算机网络.md",
+    "01 基础知识/设计模式/结构型.md",
     "06 工具类/Git.md"
   ]
 }

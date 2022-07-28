@@ -4,5 +4,6 @@
   "defaultViewMode": "source",
   "promptDelete": false,
   "communityThemeSortOrder": "download",
-  "readableLineLength": false
+  "readableLineLength": false,
+  "attachmentFolderPath": ".//assets"
 }
