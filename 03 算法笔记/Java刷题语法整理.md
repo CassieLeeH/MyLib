@@ -97,6 +97,130 @@ for(String str:strings){
 }
 ```
 
+# 数据结构
+## 栈
+
+```java
+Stack<Integer> stack = new Stack<>();
+Deque<Integer> stack = new LinkedList<Integer>();
+//压栈
+stack.push(object);
+//出栈
+stack.pop();
+//查看栈顶元素
+stack.peek();
+//判断是否为空
+stack.empty();
+```
+
+## 队列
+
+```java
+//queue 单向队列
+Queue<Integer> queue = new LinkedList<Integer>();
+// 入队
+queue.offer(object);
+// 出队
+queue.poll();
+// 查看队首元素
+queue.peek();
+
+
+//deque 双端队列
+LinkedList<Integer> list = new LinkedList<Integer>();
+// 从头或者尾入队
+deque.offerFirst(object);
+deque.offerLast(object);
+// 从头或者尾出队
+deque.pollFirst();
+deque.pollLast();
+//查看两段元素
+deque.peekFirst();
+deque.peekLast();
+
+```
+
+# String类方法
+
+### 1.基本操作
+
+```java
+		String name = "zhj123zhj";//定义一个name
+		System.out.println("获取字符串长度");
+        System.out.println(name.length());//获取字符串长度
+
+        System.out.println("指定字符在此字符串中第一次出现的索引");
+        System.out.println(name.indexOf('z'));
+        System.out.println(name.indexOf("zhj"));
+        System.out.println(name.indexOf("zhj",0));//fromIndex指从哪边开始第一个出现
+
+        System.out.println("指定字符在此字符串中最后一次出现的索引");
+        System.out.println(name.lastIndexOf('z'));
+        System.out.println(name.lastIndexOf("zhj"));
+        System.out.println(name.lastIndexOf("zhj",5));//fromIndex指从哪边结束的最后一个出现
+
+        System.out.println(name.charAt(0));//返回对应索引上的字符
+```
+
+### 2.转换操作
+
+```JAVA
+       	System.out.println("将字符串转换为字符数组");
+        System.out.println(name.toCharArray());
+
+        System.out.println("将int型转换为字符串");
+        System.out.println(String.valueOf(123));
+
+        System.out.println("将String中所有字符变成小写/大写");
+        System.out.println(name.toLowerCase());
+        System.out.println(name.toUpperCase());
+```
+
+### 3.替换与去除
+
+```JAVA
+		System.out.println("用新的str代替旧的str");
+        System.out.println(name.replace("zhj","xxx"));
+
+
+        String trim1 ="  zhj 123  ";
+        System.out.println("除去字符串前后空格");
+        System.out.println(trim1.trim());
+```
+
+### 4.截取与分割
+
+```JAVA
+		System.out.println("用特定规则分割字符串，比如',' ");
+        String str1 = "aa,bb,cc";
+        String[] split1 = str1.split(",");
+        for (int i = 0; i <split1.length ; i++) {
+            System.out.println(split1[i]);
+        }
+
+        System.out.println("截取字符,从beginIndex开始，包括第一个,不包括最后一个");
+        System.out.println(name.substring(1));
+        System.out.println(name.substring(0,1));
+```
+
+### 5.判断操作
+
+```JAVA
+		System.out.println("比较两个字符串是否相等");
+        String name2 = "ZHJ";
+        System.out.println(name.equals(name2));//false
+
+        System.out.println("判断字符串是否以指定的字符串开始/结束");
+        System.out.println(name.startsWith("zhj"));//true
+        System.out.println(name.endsWith("zhj"));//true
+
+        System.out.println("字符串里是否包含指定的字符串");
+        System.out.println(name.contains("zhj"));//true
+
+        System.out.println("判断字符串长度是否为0");
+        System.out.println(name.isEmpty());//false
+```
+
 # Math类方法整理
 ```java
 import java.math.*;

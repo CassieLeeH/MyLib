@@ -4,30 +4,30 @@
     "type": "split",
     "children": [
       {
-        "id": "fc3164892aa726b9",
+        "id": "b56feb46fe2324be",
         "type": "leaf",
-        "dimension": 75.7469244288225,
+        "dimension": 80.09991673605329,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "00 八股文集中营/数据库 Redis.md",
+            "file": "00 八股文集中营/Golang 基础.md",
             "mode": "source",
             "source": false
           }
         },
-        "group": "b4b38b2831d3cf9a"
+        "group": "cd845b150cc92b65"
       },
       {
-        "id": "19b938132e7f09f3",
+        "id": "9cb6b24f3989805a",
         "type": "leaf",
-        "dimension": 24.253075571177504,
+        "dimension": 19.900083263946712,
         "state": {
           "type": "outline",
           "state": {
-            "file": "00 八股文集中营/数据库 Redis.md"
+            "file": "00 八股文集中营/Golang 基础.md"
           }
         },
-        "group": "b4b38b2831d3cf9a"
+        "group": "cd845b150cc92b65"
       }
     ],
     "direction": "vertical"
@@ -67,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261
+    "width": 197
   },
   "right": {
     "id": "0e31dc5d387be3be",
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00 八股文集中营/数据库 Redis.md",
+                "file": "00 八股文集中营/Golang 基础.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00 八股文集中营/数据库 Redis.md"
+                "file": "00 八股文集中营/Golang 基础.md"
               }
             }
           }
@@ -111,17 +111,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "fc3164892aa726b9",
+  "active": "b56feb46fe2324be",
   "lastOpenFiles": [
-    "00 八股文集中营/Java 多线程.md",
-    "00 八股文集中营/Java 基础.md",
-    "00 八股文集中营/Java 集合.md",
+    "00 八股文集中营/基础 数据结构.md",
     "00 八股文集中营/设计模式.md",
-    "01 基础知识/设计模式/创建型.md",
-    "01 基础知识/设计模式/行为型.md",
-    "01 基础知识/操作系统.md",
-    "01 基础知识/计算机网络.md",
-    "01 基础知识/设计模式/结构型.md",
-    "06 工具类/Git.md"
+    "00 八股文集中营/基础 计算机网络.md",
+    "00 八股文集中营/基础 操作系统.md",
+    "00 八股文集中营/Golang 基础.md",
+    "05 中间件/消息队列/Kafka.md",
+    "03 算法笔记/Java刷题语法整理.md",
+    "03 算法笔记/(Java)算法笔记.md",
+    "00 八股文集中营/消息队列 Kafka.md",
+    "00 八股文集中营/数据库 MySQL.md"
   ]
 }
