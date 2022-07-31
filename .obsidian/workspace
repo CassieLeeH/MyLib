@@ -6,11 +6,11 @@
       {
         "id": "b56feb46fe2324be",
         "type": "leaf",
-        "dimension": 80.09991673605329,
+        "dimension": 73.89418907198613,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "00 八股文集中营/Golang 基础.md",
+            "file": "00 八股文集中营/Java 集合.md",
             "mode": "source",
             "source": false
           }
@@ -20,11 +20,11 @@
       {
         "id": "9cb6b24f3989805a",
         "type": "leaf",
-        "dimension": 19.900083263946712,
+        "dimension": 26.105810928013877,
         "state": {
           "type": "outline",
           "state": {
-            "file": "00 八股文集中营/Golang 基础.md"
+            "file": "00 八股文集中营/Java 集合.md"
           }
         },
         "group": "cd845b150cc92b65"
@@ -67,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 197
+    "width": 245
   },
   "right": {
     "id": "0e31dc5d387be3be",
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00 八股文集中营/Golang 基础.md",
+                "file": "00 八股文集中营/Java 集合.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00 八股文集中营/Golang 基础.md"
+                "file": "00 八股文集中营/Java 集合.md"
               }
             }
           }
@@ -113,15 +113,15 @@
   },
   "active": "b56feb46fe2324be",
   "lastOpenFiles": [
-    "00 八股文集中营/基础 数据结构.md",
-    "00 八股文集中营/设计模式.md",
-    "00 八股文集中营/基础 计算机网络.md",
-    "00 八股文集中营/基础 操作系统.md",
+    "00 八股文集中营/Java JVM.md",
+    "00 八股文集中营/HashMap 和 HashSet 区别.md",
+    "00 八股文集中营/Java 集合.md",
+    "00 八股文集中营/Java 多线程.md",
+    "00 八股文集中营/Java 基础.md",
+    "06 工具类/Git.md",
     "00 八股文集中营/Golang 基础.md",
-    "05 中间件/消息队列/Kafka.md",
-    "03 算法笔记/Java刷题语法整理.md",
-    "03 算法笔记/(Java)算法笔记.md",
+    "00 八股文集中营/数据库 MySQL.md",
     "00 八股文集中营/消息队列 Kafka.md",
-    "00 八股文集中营/数据库 MySQL.md"
+    "00 八股文集中营/数据库 Redis.md"
   ]
 }
