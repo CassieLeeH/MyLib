@@ -2,5 +2,6 @@
   "translucency": false,
   "theme": "moonstone",
   "baseFontSize": 16,
-  "cssTheme": "Minimal"
+  "cssTheme": "Things",
+  "baseFontSizeAction": false
 }
