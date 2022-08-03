@@ -65,7 +65,7 @@ drop index index_name on table_name
 
 ③索引可以帮助我们进行分组、排序等操作时，避免使用临时表
 
-## **BTree算法 Hash算法**
+## BTree算法 Hash算法
 
 索引算法有 BTree算法和Hash算法
 

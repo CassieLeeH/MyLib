@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "02 Java/Java JVM.md",
+            "file": "05 算法笔记/排序算法.md",
             "mode": "source",
             "source": false
           }
@@ -24,7 +24,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "02 Java/Java JVM.md"
+            "file": "05 算法笔记/排序算法.md"
           }
         },
         "group": "cd845b150cc92b65"
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02 Java/Java JVM.md",
+                "file": "05 算法笔记/排序算法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02 Java/Java JVM.md"
+                "file": "05 算法笔记/排序算法.md"
               }
             }
           }
@@ -113,15 +113,15 @@
   },
   "active": "b56feb46fe2324be",
   "lastOpenFiles": [
-    "02 Java/Java 基础.md",
+    "06 中间件/消息队列/Kafka.md",
+    "07 工具类/Docker.md",
+    "07 工具类/Git.md",
     "02 Java/Java 多线程.md",
-    "03 计算机基础/Linux.md",
-    "04 数据库/数据库 MySQL.md",
-    "04 数据库/数据库 Redis.md",
-    "04 数据库/Redis.md",
-    "05 算法笔记/Java刷题语法整理.md",
-    "05 算法笔记/排序算法.md",
-    "05 算法笔记/(Java)算法笔记.md",
-    "05 算法笔记/10亿数中找到最大.md"
+    "02 Java/Java 基础.md",
+    "01 Golang/(Golang) 基础.md",
+    "01 Golang/垃圾回收 异常 接口 函数 方法.md",
+    "01 Golang/并发.md",
+    "01 Golang/基础与数据类型.md",
+    "01 Golang/基于Gin框架和Gorm的日程清单项目.md"
   ]
 }
