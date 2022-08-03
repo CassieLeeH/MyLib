@@ -5,7 +5,6 @@
 - `git clone url` 克隆远程版本库
 - `git init` 初始化本地版本库
 
-
 git log --author='XXXX' --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }'
 
 ## 配置
@@ -63,7 +62,6 @@ git log --author='XXXX' --pretty=tformat: --numstat | awk '{ add += $1; subs += 
 - `git push origin --tags` 推送所有标签
 
 ## 查看信息
-
 - `git status` 查看文件状态
 - `git help [command]` 获取帮助文档
 - `git [command] --help` 获取帮助文档

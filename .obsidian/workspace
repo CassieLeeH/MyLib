@@ -6,11 +6,11 @@
       {
         "id": "b56feb46fe2324be",
         "type": "leaf",
-        "dimension": 70.62391681109186,
+        "dimension": 69.57311534968211,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "02 Java/Java 基础.md",
+            "file": "02 Java/Java JVM.md",
             "mode": "source",
             "source": false
           }
@@ -20,11 +20,11 @@
       {
         "id": "9cb6b24f3989805a",
         "type": "leaf",
-        "dimension": 29.376083188908147,
+        "dimension": 30.4268846503179,
         "state": {
           "type": "outline",
           "state": {
-            "file": "02 Java/Java 基础.md"
+            "file": "02 Java/Java JVM.md"
           }
         },
         "group": "cd845b150cc92b65"
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "主从",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 245
+    "width": 279.5
   },
   "right": {
     "id": "0e31dc5d387be3be",
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02 Java/Java 基础.md",
+                "file": "02 Java/Java JVM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02 Java/Java 基础.md"
+                "file": "02 Java/Java JVM.md"
               }
             }
           }
@@ -113,15 +113,15 @@
   },
   "active": "b56feb46fe2324be",
   "lastOpenFiles": [
+    "02 Java/Java 基础.md",
     "02 Java/Java 多线程.md",
-    "01 Golang/GoWeb Gin Gorm.md",
-    "01 Golang/Golang 基础.md",
-    "01 Golang/垃圾回收 异常 接口 函数 方法.md",
-    "01 Golang/基础与数据类型.md",
-    "01 Golang/并发.md",
-    "00 面试相关/简历.md",
-    "00 面试相关/李凯欣 中南大学 简历.pdf",
-    "06 中间件/消息队列/Kafka.md",
-    "02 Java/Java 集合.md"
+    "03 计算机基础/Linux.md",
+    "04 数据库/数据库 MySQL.md",
+    "04 数据库/数据库 Redis.md",
+    "04 数据库/Redis.md",
+    "05 算法笔记/Java刷题语法整理.md",
+    "05 算法笔记/排序算法.md",
+    "05 算法笔记/(Java)算法笔记.md",
+    "05 算法笔记/10亿数中找到最大.md"
   ]
 }
