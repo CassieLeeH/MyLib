@@ -6,11 +6,11 @@
       {
         "id": "b56feb46fe2324be",
         "type": "leaf",
-        "dimension": 69.57311534968211,
+        "dimension": 74.39862542955326,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "05 算法笔记/排序算法.md",
+            "file": "05 算法笔记/(Java)算法笔记.md",
             "mode": "source",
             "source": false
           }
@@ -20,11 +20,11 @@
       {
         "id": "9cb6b24f3989805a",
         "type": "leaf",
-        "dimension": 30.4268846503179,
+        "dimension": 25.601374570446733,
         "state": {
           "type": "outline",
           "state": {
-            "file": "05 算法笔记/排序算法.md"
+            "file": "05 算法笔记/(Java)算法笔记.md"
           }
         },
         "group": "cd845b150cc92b65"
@@ -54,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "主从",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 279.5
+    "width": 216.5
   },
   "right": {
     "id": "0e31dc5d387be3be",
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "05 算法笔记/排序算法.md",
+                "file": "05 算法笔记/(Java)算法笔记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "05 算法笔记/排序算法.md"
+                "file": "05 算法笔记/(Java)算法笔记.md"
               }
             }
           }
@@ -113,15 +113,15 @@
   },
   "active": "b56feb46fe2324be",
   "lastOpenFiles": [
-    "06 中间件/消息队列/Kafka.md",
-    "07 工具类/Docker.md",
-    "07 工具类/Git.md",
-    "02 Java/Java 多线程.md",
+    "05 算法笔记/(Java)刷题语法整理.md",
     "02 Java/Java 基础.md",
-    "01 Golang/(Golang) 基础.md",
-    "01 Golang/垃圾回收 异常 接口 函数 方法.md",
-    "01 Golang/并发.md",
-    "01 Golang/基础与数据类型.md",
-    "01 Golang/基于Gin框架和Gorm的日程清单项目.md"
+    "05 算法笔记/(Java)算法笔记.md",
+    "05 算法笔记/排序算法.md",
+    "03 计算机基础/计算机网络.md",
+    "02 Java/Java 多线程.md",
+    "02 Java/Java 集合.md",
+    "03 计算机基础/设计模式.md",
+    "03 计算机基础/操作系统.md",
+    "02 Java/Java JVM.md"
   ]
 }

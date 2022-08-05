@@ -1,10 +1,10 @@
 
 ## 基本概念
-![image-20210923091544110](assets/image-20220713195802793.png)
+![image-20210923091544110](../assets/image-20220713195802793.png)
 
 ### JRE和JDK
 
-![image-20210923091544110](assets/image-20210923091544110.png)
+![image-20210923091544110](../assets/image-20210923091544110.png)
 
 JVM（Java Virtual Machine），Java虚拟机
 

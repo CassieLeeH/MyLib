@@ -109,11 +109,11 @@ if bytes.Compare(a, b) < 0 {
 }
 ```
 
-![img](assets/1650199135730-974135f3-6fda-45f7-8552-fbc54f2b1d03.png)
+![img](../assets/1650199135730-974135f3-6fda-45f7-8552-fbc54f2b1d03.png)
 
 ### 字符串
 
-![img](assets/1647262025603-5f6375fb-25eb-4910-9e3b-6d31293ef349.png)
+![img](../assets/1647262025603-5f6375fb-25eb-4910-9e3b-6d31293ef349.png)
 
 字符串可以这样比较
 
@@ -312,7 +312,7 @@ a=a[:i+copy(a[i:],a[i+N:])]//删除中间N个元素
 
 ### 二维数组
 
-![img](assets/1647149973450-2e35466a-4f83-44da-bfe7-515b5ea8fda3.png)
+![img](../assets/1647149973450-2e35466a-4f83-44da-bfe7-515b5ea8fda3.png)
 
 求二维数组行与列
 
@@ -322,7 +322,7 @@ Column := len(matrix[0])
 
 声明
 
-![img](assets/1647149973671-8a1e6d0c-818b-4529-8496-b26d2474d6bf.png)
+![img](../assets/1647149973671-8a1e6d0c-818b-4529-8496-b26d2474d6bf.png)
 
 ariable_type 为 Go 语言的数据类型，arrayName 为数组名，二维数组可认为是一个表格，x 为行，y 为列
 
@@ -340,9 +340,9 @@ for i := 0; i < n; i++ {
 }
 ```
 
-![img](assets/1647149973997-a38517a9-7a75-4c3b-95ca-19a7af06f08e.png)
+![img](../assets/1647149973997-a38517a9-7a75-4c3b-95ca-19a7af06f08e.png)
 
-![img](assets/1647149974505-c1af60de-eef5-464c-9336-4b46dc0a2d26.png)
+![img](../assets/1647149974505-c1af60de-eef5-464c-9336-4b46dc0a2d26.png)
 
 二维数组里加一维数组
 
@@ -354,9 +354,9 @@ res = append(res, append([]int{}, track...))
 
 ### Go中 的类型转换
 
-![img](assets/1647149970319-f4258e80-fb44-4a86-a038-bd13e902f7bd.png)
+![img](../assets/1647149970319-f4258e80-fb44-4a86-a038-bd13e902f7bd.png)
 
-![img](assets/1647149970889-777b9cb9-244c-44d0-8e2c-d48cac0d8528.png)
+![img](../assets/1647149970889-777b9cb9-244c-44d0-8e2c-d48cac0d8528.png)
 
 ### 位运算
 
@@ -379,7 +379,7 @@ func OnesCount(x uint) int
 
 \>>:  A>>2  **右移**两位  0000 1111
 
-![img](assets/1648447616564-442c7581-7807-46b9-8a55-7d44313b3ae2.png)
+![img](../assets/1648447616564-442c7581-7807-46b9-8a55-7d44313b3ae2.png)
 
 ## 循环语句
 
@@ -491,7 +491,7 @@ label: statement;
 
 **sort函数的用法**
 
-![img](assets/1647149971393-860a925a-f5e0-4c66-845a-3b58027c2d07.png)
+![img](../assets/1647149971393-860a925a-f5e0-4c66-845a-3b58027c2d07.png)
 
 sort.Ints(x)//默认升序
 
@@ -523,7 +523,7 @@ func (s IntSlice) Less(i, j int) bool { return s[i] < s[j] }
 
 sort.Sort(IntSlice(nums))
 
-![img](assets/1647149971923-ba67f81a-f32f-44b0-9858-cfe224c4f010.png)![img](assets/1647149972457-560847e9-6efb-4dcb-8cec-6c8b7eddc46d.png)
+![img](../assets/1647149971923-ba67f81a-f32f-44b0-9858-cfe224c4f010.png)![img](../assets/1647149972457-560847e9-6efb-4dcb-8cec-6c8b7eddc46d.png)
 
 切片排序
 
@@ -541,7 +541,7 @@ sort.Sort(IntSlice(nums))
 
 
 
-![img](assets/1647149972968-90fafbbf-6c4b-43ed-9302-e929ca1f45f7.png)
+![img](../assets/1647149972968-90fafbbf-6c4b-43ed-9302-e929ca1f45f7.png)
 
 ## 
 
@@ -549,9 +549,9 @@ sort.Sort(IntSlice(nums))
 
 ## range用法
 
-![img](assets/1647149974717-0eb39f77-ebdb-4e50-980b-4e88358cd794.png)
+![img](../assets/1647149974717-0eb39f77-ebdb-4e50-980b-4e88358cd794.png)
 
-![img](assets/1647149974994-9dfa61ed-5a28-446b-a200-2589e1d3968e.png)
+![img](../assets/1647149974994-9dfa61ed-5a28-446b-a200-2589e1d3968e.png)
 
 ## 函数返回多个值
 
@@ -576,29 +576,29 @@ func main() {
 
 简易版：
 
-![img](assets/1647149977103-1cca0de9-4d0f-49ee-a71e-6ad3216a241a.png)
+![img](../assets/1647149977103-1cca0de9-4d0f-49ee-a71e-6ad3216a241a.png)
 
 防止内存泄露版：
 
-![img](assets/1647149977309-b455844c-00e3-43fe-81dc-1f88d15aaacb.png)
+![img](../assets/1647149977309-b455844c-00e3-43fe-81dc-1f88d15aaacb.png)
 
 ## 链表
 
-![img](assets/1647149977700-eb9b9365-f970-454a-8436-d14b688c0179.png)
+![img](../assets/1647149977700-eb9b9365-f970-454a-8436-d14b688c0179.png)
 
 创建
 
-![img](assets/1647149978141-1a3fb562-87cc-4ff4-b04c-07c1c2425bbb.png)
+![img](../assets/1647149978141-1a3fb562-87cc-4ff4-b04c-07c1c2425bbb.png)
 
 
 
 插入
 
-![img](assets/1647149978371-a615a8d1-f0c0-4b3e-b40a-5568a259db1e.png)
+![img](../assets/1647149978371-a615a8d1-f0c0-4b3e-b40a-5568a259db1e.png)
 
 删除
 
-![img](assets/1647149978764-6a35046b-d1d9-48ba-98e6-9fa8646636c5.png)
+![img](../assets/1647149978764-6a35046b-d1d9-48ba-98e6-9fa8646636c5.png)
 
 ## 树
 
@@ -664,7 +664,7 @@ func postorderTraversal(root *TreeNode) []int {
 }
 ```
 
-![img](assets/1647502097561-9f39d697-a3ac-475f-b08d-cb0a6ded3f31.png)
+![img](../assets/1647502097561-9f39d697-a3ac-475f-b08d-cb0a6ded3f31.png)
 
 ## 哈希表
 
@@ -676,7 +676,7 @@ func postorderTraversal(root *TreeNode) []int {
 
 当我们插入一个新的键时，哈希函数将决定该键应该分配到哪个桶中，并将该键存储在相应的桶中；当我们想要搜索一个键时，哈希表将使用相同的哈希函数来查找对应的桶，并只在特定的桶中进行搜索。
 
-![img](assets/1647149979271-b720912b-215e-4428-a463-4f3486f3a65c.png)
+![img](../assets/1647149979271-b720912b-215e-4428-a463-4f3486f3a65c.png)
 
 键、哈希函数、桶
 
@@ -713,9 +713,9 @@ for name, age := range ages {
 
 ### map的排序
 
-![img](assets/1647163759185-bfdddbf1-2ba6-4df4-961e-7f26c88af885.png)
+![img](../assets/1647163759185-bfdddbf1-2ba6-4df4-961e-7f26c88af885.png)
 
-![img](assets/1647163767193-8bf0d7ea-dcb2-4de1-8dc5-145cf5a9adae.png)
+![img](../assets/1647163767193-8bf0d7ea-dcb2-4de1-8dc5-145cf5a9adae.png)
 
 对map[string]int 排序 输出
 

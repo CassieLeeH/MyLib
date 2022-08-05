@@ -1,6 +1,6 @@
 # 概述
 Java 集合， 也叫作容器，主要是由两大接口派生而来：一个是 `Collection`接口，主要用于存放单一元素；另一个是 `Map` 接口，主要用于存放键值对。对于`Collection` 接口，下面又有三个主要的子接口：`List`、`Set` 和 `Queue`。
-![[Pasted image 20220731234037.png]]
+![Pasted image 20220731234037](../assets/Pasted%20image%2020220731234037.png)
 
 ## List, Set, Queue, Map 四者的区别？
 -   `List`(对付顺序的好帮手): 存储的元素是有序的、可重复的。
@@ -133,6 +133,7 @@ TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素
     
 -   `ArrayDeque` 插入时可能存在扩容过程, 不过均摊后的插入操作依然为 O(1)。虽然 `LinkedList` 不需要扩容，但是每次插入数据时均需要申请新的堆空间，均摊性能相比更慢。
     
+
 从性能的角度上，选用 `ArrayDeque` 来实现队列要比 `LinkedList` 更好。此外，`ArrayDeque` 也可以用于实现栈。
 
 
@@ -368,7 +369,6 @@ JDK1.8 （上面有示意图）
 ## LinkedHashMap
 
 使用双向链表来维护元素的顺序，顺序为插入顺序或者最近最少使用(LRU)顺序。
-
 
 
 

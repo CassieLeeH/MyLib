@@ -6,5 +6,6 @@
   "communityThemeSortOrder": "download",
   "readableLineLength": false,
   "attachmentFolderPath": "assets",
-  "strictLineBreaks": false
+  "strictLineBreaks": false,
+  "useMarkdownLinks": true
 }

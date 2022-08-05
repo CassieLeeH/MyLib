@@ -202,11 +202,11 @@ func Merge(nums []int, low int, mid int, high int) {
 
 要计算一个数组（i，j）之间的总和，例如nums := []int{3,5,2,-2,4,1}, 常规思路是，从第i个数加到第j个数，计算总和。但是如果需要反复调用计算，那每次查询的时间复杂度为O(N). 前缀和的核⼼思路是我们 new ⼀个新的数组 preSum 出来，preSum[i] 记录 nums[0..i-1] 的累加和：如求（2，5）则preSum[6]-preSum[2], 时间复杂度O(1).
 
-![img](assets/1649818863260-883b0f9f-e306-4a08-9f8e-d43fc7b59516.png)
+![img](../assets/1649818863260-883b0f9f-e306-4a08-9f8e-d43fc7b59516.png)
 
 **和为 k 的⼦数组**
 
-![img](assets/1649833201778-c079ba36-e03b-470b-be4d-9deef5177c4b.png)
+![img](../assets/1649833201778-c079ba36-e03b-470b-be4d-9deef5177c4b.png)
 
 **方法一：先计算数组前缀和，穷举所有子数组，找出符合条件个数；**时间复杂度 O(N^2) 空间复杂度 O(N)，并不是最优的解法。
 
@@ -226,7 +226,7 @@ func Merge(nums []int, low int, mid int, high int) {
 
 **差分数组的主要适⽤场景是频繁对原始数组的某个区间的元素进⾏增减。** 
 
-![img](assets/1649989072520-b7492be2-84c9-47ab-818f-cfc8a452792d.png)
+![img](../assets/1649989072520-b7492be2-84c9-47ab-818f-cfc8a452792d.png)
 
 ```go
 //构造差分数组
@@ -309,7 +309,7 @@ func search(nums []int,target int) int{
 
 ### 滑动窗口
 
-![img](assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
+![img](../assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
 
 ### 
 
@@ -325,7 +325,7 @@ func search(nums []int,target int) int{
 
 ⼆叉树题⽬的难点在于如何通过题⽬的要求思考出每⼀个节点需要做什么。
 
-![img](assets/1651993271660-d54a0390-0136-4bfe-80ba-172282a06021.jpeg)
+![img](../assets/1651993271660-d54a0390-0136-4bfe-80ba-172282a06021.jpeg)
 
 **二叉树的遍历方式：** 
 
@@ -447,7 +447,7 @@ func levelOrder(root *TreeNode) [][]int {
 
 它的左右两个⼦树的⾼度差的绝对值不超过1，并且左右两个⼦树都是⼀棵平衡⼆叉树。
 
-![img](assets/1652191188377-3555c8d6-8fd0-4482-9f96-cf7ad3981eeb.jpeg)
+![img](../assets/1652191188377-3555c8d6-8fd0-4482-9f96-cf7ad3981eeb.jpeg)
 
 ## 图
 
@@ -500,7 +500,7 @@ func backtrack(nums []int, start int, target int) {
 
 ### 
 
-![img](assets/1650865926029-febdb61e-c31c-49a4-a17c-1c6c386a0092.jpeg)
+![img](../assets/1650865926029-febdb61e-c31c-49a4-a17c-1c6c386a0092.jpeg)
 
 ## BFS
 
@@ -518,9 +518,9 @@ func backtrack(nums []int, start int, target int) {
 
 **明确 base case -> 明确「状态」-> 明确「选择」 -> 定义 dp 数组/函数的含义**
 
-![img](assets/1649555679467-c3a46ec1-6bab-4f89-9b86-001db983844b.png)
+![img](../assets/1649555679467-c3a46ec1-6bab-4f89-9b86-001db983844b.png)
 
-![img](assets/1650247498541-e98d8786-5004-45c4-9789-6b1db8e507cb.jpeg)
+![img](../assets/1650247498541-e98d8786-5004-45c4-9789-6b1db8e507cb.jpeg)
 
 # 数学相关
 

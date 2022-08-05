@@ -12,9 +12,6 @@ String[] s = br.readLine().split(" ");//按“ ”划分
 int n = Integer.parseInt(s[0]);//第一个值为n
 int x = Integer.parseInt(s[1]);
 int y = Integer.parseInt(s[2]);
-//Scanner的平均耗时是BufferedReader的10倍左右，强烈推荐使用BufferedReader读取数据！
-Scanner scanner = new Scanner(System.in);
-int n = in.nextInt();
 ```
 
 - BufferedReader.readLine()方法会返回用户在按下Enter键之前的所有字符输入,不包括最后按下的Enter返回字符.
@@ -27,7 +24,6 @@ int n = in.nextInt();
 //待补充 
 System.out.println(n);
 ```
-
 
 
 # 类型转换

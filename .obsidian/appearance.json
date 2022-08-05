@@ -3,5 +3,6 @@
   "theme": "moonstone",
   "baseFontSize": 16,
   "cssTheme": "Things",
-  "baseFontSizeAction": false
+  "baseFontSizeAction": false,
+  "monospaceFontFamily": "Monaco"
 }

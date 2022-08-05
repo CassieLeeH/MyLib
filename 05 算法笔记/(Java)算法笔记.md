@@ -14,11 +14,11 @@
 
 要计算一个数组（i，j）之间的总和，例如nums := []int{3,5,2,-2,4,1}, 常规思路是，从第i个数加到第j个数，计算总和。但是如果需要反复调用计算，那每次查询的时间复杂度为O(N). 前缀和的核⼼思路是我们 new ⼀个新的数组 preSum 出来，preSum[i] 记录 nums[0..i-1] 的累加和：如求（2，5）则preSum[6]-preSum[2], 时间复杂度O(1).
 
-![img](assets/1649818863260-883b0f9f-e306-4a08-9f8e-d43fc7b59516.png)
+![img](../assets/1649818863260-883b0f9f-e306-4a08-9f8e-d43fc7b59516.png)
 
 **和为 k 的⼦数组**
 
-![img](assets/1649833201778-c079ba36-e03b-470b-be4d-9deef5177c4b.png)
+![img](../assets/1649833201778-c079ba36-e03b-470b-be4d-9deef5177c4b.png)
 
 **方法一：先计算数组前缀和，穷举所有子数组，找出符合条件个数；**时间复杂度 O(N^2) 空间复杂度 O(N)，并不是最优的解法。
 
@@ -38,7 +38,7 @@
 
 **差分数组的主要适⽤场景是频繁对原始数组的某个区间的元素进⾏增减。** 
 
-![img](assets/1649989072520-b7492be2-84c9-47ab-818f-cfc8a452792d.png)
+![img](../assets/1649989072520-b7492be2-84c9-47ab-818f-cfc8a452792d.png)
 
 ```go
 //构造差分数组
@@ -122,7 +122,7 @@ public int BinarySearch(int[] nums,int target){
 
 ### 滑动窗口
 
-![img](assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
+![img](../assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
 
 ## 队列/栈
 
@@ -136,7 +136,7 @@ public int BinarySearch(int[] nums,int target){
 
 ⼆叉树题⽬的难点在于如何通过题⽬的要求思考出每⼀个节点需要做什么。
 
-![img](assets/1651993271660-d54a0390-0136-4bfe-80ba-172282a06021.jpeg)
+![img](../assets/1651993271660-d54a0390-0136-4bfe-80ba-172282a06021.jpeg)
 
 **二叉树的遍历方式：** 
 
@@ -150,90 +150,111 @@ public int BinarySearch(int[] nums,int target){
 
 - - 层次遍历（迭代法）
 
-```go
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+```java
+// 前序遍历·递归·LC144_二叉树的前序遍历
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        preorder(root, result);
+        return result;
+    }
+
+    public void preorder(TreeNode root, List<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        result.add(root.val);
+        preorder(root.left, result);
+        preorder(root.right, result);
+    }
+}
+// 中序遍历·递归·LC94_二叉树的中序遍历
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        inorder(root, res);
+        return res;
+    }
+
+    void inorder(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left, list);
+        list.add(root.val);             // 注意这一句
+        inorder(root.right, list);
+    }
+}
+// 后序遍历·递归·LC145_二叉树的后序遍历
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        postorder(root, res);
+        return res;
+    }
+
+    void postorder(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        postorder(root.left, list);
+        postorder(root.right, list);
+        list.add(root.val);             // 注意这一句
+    }
 }
 
-//前序遍历二叉树
-func preorderTraversal(root *TreeNode) []int {
-	var res []int
-	var preorder func(node *TreeNode)
-	preorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		res = append(res, node.Val)
-		preorder(node.Left)
-		preorder(node.Right)
-	}
-	preorder(root)
-	return res
-}
+// 102.二叉树的层序遍历
+class Solution {
+    public List<List<Integer>> resList = new ArrayList<List<Integer>>();
 
-//中序遍历
-func inorderTraversal(root *TreeNode) []int {
-	var res []int
-	var inorder func(node *TreeNode)
-	inorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		inorder(node.Left)
-		res = append(res, node.Val)
-		inorder(node.Right)
-	}
-	inorder(root)
-	return res
-}
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        //checkFun01(root,0);
+        checkFun02(root);
 
-//后序遍历
-func postorderTraversal(root *TreeNode) []int {
-	var res []int
-	var postorder func(node *TreeNode)
-	postorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		postorder(node.Left)
-		postorder(node.Right)
-		res = append(res, node.Val)
-	}
-	postorder(root)
-	return res
-}
+        return resList;
+    }
 
-//层序遍历
-func levelOrder(root *TreeNode) [][]int {
-	var res [][]int
-	if root == nil {
-		return res
-	}
-	//树类型切片,q[0] = root
-	q := []*TreeNode{root}
-	//从上向下遍历
-	for i := 0; len(q) > 0; i++ {
-		res = append(res, []int{})
-		var p []*TreeNode
-		//从左到右遍历
-		for j := 0; j < len(q); j++ {
-			node := q[j]
-			res[i] = append(res[i], node.Val)
-			if node.Left != nil {
-				p = append(p, node.Left)
-			}
-			if node.Right != nil {
-				p = append(p, node.Right)
-			}
-		}
-		q = p
-	}
-	return res
+    //DFS--递归方式
+    public void checkFun01(TreeNode node, Integer deep) {
+        if (node == null) return;
+        deep++;
+
+        if (resList.size() < deep) {
+            //当层级增加时，list的Item也增加，利用list的索引值进行层级界定
+            List<Integer> item = new ArrayList<Integer>();
+            resList.add(item);
+        }
+        resList.get(deep - 1).add(node.val);
+
+        checkFun01(node.left, deep);
+        checkFun01(node.right, deep);
+    }
+
+    //BFS--迭代方式--借助队列
+    public void checkFun02(TreeNode node) {
+        if (node == null) return;
+        Queue<TreeNode> que = new LinkedList<TreeNode>();
+        que.offer(node);
+
+        while (!que.isEmpty()) {
+            List<Integer> itemList = new ArrayList<Integer>();
+            int len = que.size();
+
+            while (len > 0) {
+                TreeNode tmpNode = que.poll();
+                itemList.add(tmpNode.val);
+
+                if (tmpNode.left != null) que.offer(tmpNode.left);
+                if (tmpNode.right != null) que.offer(tmpNode.right);
+                len--;
+            }
+
+            resList.add(itemList);
+        }
+
+    }
 }
 ```
-
 
 
 **二叉树的序列化：**
@@ -258,7 +279,7 @@ func levelOrder(root *TreeNode) [][]int {
 
 它的左右两个⼦树的⾼度差的绝对值不超过1，并且左右两个⼦树都是⼀棵平衡⼆叉树。
 
-![img](assets/1652191188377-3555c8d6-8fd0-4482-9f96-cf7ad3981eeb.jpeg)
+![img](../assets/1652191188377-3555c8d6-8fd0-4482-9f96-cf7ad3981eeb.jpeg)
 
 ## 图
 
@@ -331,9 +352,7 @@ class Solution {
 
 ### 最小生成树
 
-# 暴力搜索
-
-## DFS/回溯算法
+# 回溯算法
 
 回溯算法其实就是我们常说的 DFS 算法，本质上就是⼀种暴⼒穷举算法。 解决⼀个回溯问题，实际上就是⼀个决策树的遍历过程，需要思考 3 个问题： 
 
@@ -372,9 +391,13 @@ func backtrack(nums []int, start int, target int) {
 
 ### 
 
-![img](assets/1650865926029-febdb61e-c31c-49a4-a17c-1c6c386a0092.jpeg)
+![img](../assets/1650865926029-febdb61e-c31c-49a4-a17c-1c6c386a0092.jpeg)
 
-## BFS
+
+
+
+
+# 贪心算法
 
 
 
@@ -390,9 +413,9 @@ func backtrack(nums []int, start int, target int) {
 
 **明确 base case -> 明确「状态」-> 明确「选择」 -> 定义 dp 数组/函数的含义**
 
-![img](assets/1649555679467-c3a46ec1-6bab-4f89-9b86-001db983844b.png)
+![img](../assets/1649555679467-c3a46ec1-6bab-4f89-9b86-001db983844b.png)
 
-![img](assets/1650247498541-e98d8786-5004-45c4-9789-6b1db8e507cb.jpeg)
+![img](../assets/1650247498541-e98d8786-5004-45c4-9789-6b1db8e507cb.jpeg)
 
 # 数学相关
 

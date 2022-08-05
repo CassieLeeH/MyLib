@@ -11,7 +11,7 @@ Import（
 
 ）
 
-![img](assets/1647149979868-d4cc642d-e654-4faf-b8ce-dd6bd49d461c.png)
+![img](../assets/1647149979868-d4cc642d-e654-4faf-b8ce-dd6bd49d461c.png)
 
 多路复用器：能接收多个输入信号,按每个输入信号可恢复方式合成单个输出信号。
 
@@ -19,13 +19,13 @@ Import（
 
 http协议 请求报文 响应报文 
 
-![img](assets/1647149980435-980cf1b5-f05b-48fa-9603-08439ca2a30a.png)
+![img](../assets/1647149980435-980cf1b5-f05b-48fa-9603-08439ca2a30a.png)
 
 http协议 会话方式
 
 
 
-![img](assets/1647149980925-fea9ef13-7f22-495d-a139-35b581390cff.png)
+![img](../assets/1647149980925-fea9ef13-7f22-495d-a139-35b581390cff.png)
 
 报文：客户端和服务端传的信
 
@@ -42,9 +42,9 @@ REST与技术无关，代表的是一种软件架构风格，REST是Representati
 
 只要API程序遵循了REST风格，那就可以称其为RESTful API。目前在前后端分离的架构中，前后端基本都是通过RESTful API来进行交互。
 
-![img](assets/1649123484410-cd765003-c9df-4205-9bc4-d7e610eb6b01.png)
+![img](../assets/1649123484410-cd765003-c9df-4205-9bc4-d7e610eb6b01.png)
 
-![img](assets/1649123495769-0854aa86-424d-477b-8d5e-022571592802.png)
+![img](../assets/1649123495769-0854aa86-424d-477b-8d5e-022571592802.png)
 
 Gin框架支持开发RESTful API的开发。
 
@@ -131,7 +131,7 @@ func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) 
 
 # GORM
 
-![img](assets/1649147408853-f97eebdd-90c8-4d77-9d76-88313cfd08f9.png)
+![img](../assets/1649147408853-f97eebdd-90c8-4d77-9d76-88313cfd08f9.png)
 
 - **全功能 ORM**
 -  **关联 (拥有一个，拥有多个，属于，多对多，多态，单表继承)**
