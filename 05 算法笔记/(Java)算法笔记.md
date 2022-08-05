@@ -150,87 +150,75 @@ public int BinarySearch(int[] nums,int target){
 
 - - 层次遍历（迭代法）
 
-```go
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+```java
+// 前序遍历顺序：中-左-右，入栈顺序：中-右-左
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null){
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null){
+                stack.push(node.right);
+            }
+            if (node.left != null){
+                stack.push(node.left);
+            }
+        }
+        return result;
+    }
 }
 
-//前序遍历二叉树
-func preorderTraversal(root *TreeNode) []int {
-	var res []int
-	var preorder func(node *TreeNode)
-	preorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		res = append(res, node.Val)
-		preorder(node.Left)
-		preorder(node.Right)
-	}
-	preorder(root)
-	return res
+// 中序遍历顺序: 左-中-右 入栈顺序： 左-右
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null){
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()){
+           if (cur != null){
+               stack.push(cur);
+               cur = cur.left;
+           }else{
+               cur = stack.pop();
+               result.add(cur.val);
+               cur = cur.right;
+           }
+        }
+        return result;
+    }
 }
 
-//中序遍历
-func inorderTraversal(root *TreeNode) []int {
-	var res []int
-	var inorder func(node *TreeNode)
-	inorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		inorder(node.Left)
-		res = append(res, node.Val)
-		inorder(node.Right)
-	}
-	inorder(root)
-	return res
-}
-
-//后序遍历
-func postorderTraversal(root *TreeNode) []int {
-	var res []int
-	var postorder func(node *TreeNode)
-	postorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		postorder(node.Left)
-		postorder(node.Right)
-		res = append(res, node.Val)
-	}
-	postorder(root)
-	return res
-}
-
-//层序遍历
-func levelOrder(root *TreeNode) [][]int {
-	var res [][]int
-	if root == nil {
-		return res
-	}
-	//树类型切片,q[0] = root
-	q := []*TreeNode{root}
-	//从上向下遍历
-	for i := 0; len(q) > 0; i++ {
-		res = append(res, []int{})
-		var p []*TreeNode
-		//从左到右遍历
-		for j := 0; j < len(q); j++ {
-			node := q[j]
-			res[i] = append(res[i], node.Val)
-			if node.Left != nil {
-				p = append(p, node.Left)
-			}
-			if node.Right != nil {
-				p = append(p, node.Right)
-			}
-		}
-		q = p
-	}
-	return res
+// 后序遍历顺序 左-右-中 入栈顺序：中-左-右 出栈顺序：中-右-左， 最后翻转结果
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null){
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.left != null){
+                stack.push(node.left);
+            }
+            if (node.right != null){
+                stack.push(node.right);
+            }
+        }
+        Collections.reverse(result);
+        return result;
+    }
 }
 ```
 
