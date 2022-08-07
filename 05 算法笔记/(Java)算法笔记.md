@@ -1,8 +1,5 @@
-# 数据结构
-
-## 数组/链表
-
-### 前缀和
+# 数组
+## 前缀和与差分数组
 
 \303. 区域和检索 - 数组不可变（中等） 
 
@@ -24,11 +21,9 @@
 
 **方法二：直接记录下有⼏个** **preSum[j]** **和** **preSum[i] - k** **相等，直接更新结果，就避免了内层** 
 
-**的 for 循环。**我们可以⽤**哈希表**，在记录前缀和的同时记录该前缀和出现的次数。
+**的 for 循环。我们可以⽤哈希表**，在记录前缀和的同时记录该前缀和出现的次数。
 
-
-
-### 差分数组
+**差分数组**
 
 \370. 区间加法（中等） 
 
@@ -58,7 +53,44 @@ for i:=0;i<len(diff);i++{
 }
 ```
 
-### 双指针
+
+## 二分查找
+
+二分查找的前提是数组有序，难点在于定四个区间点。
+
+```java
+public int BinarySearch(int[] nums,int target){
+   	 int high = nums.length - 1;
+   	 int low = 0;
+     while(low <= high){
+       int mid = (high - low)/2 + low;
+       if(nums[mid] == target){
+         //找到了
+         return mid;
+       }else if(nums[mid] > target ){
+         //大于目标值，找左区间
+         high = mid - 1;
+       }else{
+         //小于目标值，找右区间
+         low = mid + 1;
+       }
+     }
+    //没找到
+    return -1;
+}
+```
+
+## 滑动窗口
+
+![img](../assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
+
+# 队列/栈
+
+## 括号题
+
+## LUR
+
+# 双指针
 
 **数组双指针**
 
@@ -94,45 +126,11 @@ for i:=0;i<len(diff);i++{
 4. **删除链表的倒数第 N 个结点**
 5. **相交链表**
 
-### 二分查找
+# 字符串
 
-二分查找的前提是数组有序，难点在于定四个区间点。
+# 树
 
-```java
-public int BinarySearch(int[] nums,int target){
-   	 int high = nums.length - 1;
-   	 int low = 0;
-     while(low <= high){
-       int mid = (high - low)/2 + low;
-       if(nums[mid] == target){
-         //找到了
-         return mid;
-       }else if(nums[mid] > target ){
-         //大于目标值，找左区间
-         high = mid - 1;
-       }else{
-         //小于目标值，找右区间
-         low = mid + 1;
-       }
-     }
-    //没找到
-    return -1;
-}
-```
-
-### 滑动窗口
-
-![img](../assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
-
-## 队列/栈
-
-### 括号题
-
-### LRU
-
-## 树
-
-### 二叉树
+## 二叉树
 
 ⼆叉树题⽬的难点在于如何通过题⽬的要求思考出每⼀个节点需要做什么。
 
@@ -257,15 +255,13 @@ class Solution {
 ```
 
 
-**二叉树的序列化：**
+## 二叉树的序列化
 
 \297. 二叉树的序列化与反序列化
 
 
 
-
-
-### 二叉搜索树
+## 二叉搜索树
 
 **二叉搜索树是⼀个有序树**：（中序遍历结果是有序的）
 
@@ -281,9 +277,9 @@ class Solution {
 
 ![img](../assets/1652191188377-3555c8d6-8fd0-4482-9f96-cf7ad3981eeb.jpeg)
 
-## 图
+# 图
 
-### 图的基础
+## 图的基础
 
 图的本质是高级多叉树，适用于树的DFS/BFS遍历算法，常用邻接表和邻接矩阵来实现。
 
@@ -343,14 +339,15 @@ class Solution {
 
 
 
-### 拓扑排列
+## 拓扑排列
 
 
-### 二分图判定
+## 二分图判定
 
-### Union-Find(并查集) 
+## Union-Find(并查集) 
 
-### 最小生成树
+## 最小生成树
+
 
 # 回溯算法
 
@@ -387,9 +384,9 @@ func backtrack(nums []int, start int, target int) {
         trackSum -= nums[i]
     }
 }
+
 ```
 
-### 
 
 ![img](../assets/1650865926029-febdb61e-c31c-49a4-a17c-1c6c386a0092.jpeg)
 
@@ -402,7 +399,6 @@ func backtrack(nums []int, start int, target int) {
 
 
 # 动态规划
-
 ⾸先，**动态规划问题的⼀般形式就是求最值**。**求解动态规划的核⼼问题是穷举**。因为要求最值，肯定要把所有可⾏的答案穷举出来，然后在其中找最值呗。 
 
 ⾸先，动态规划的穷举有点特别，因为这类问题存在「**重叠⼦问题**」，如果暴⼒穷举的话效率会极其低下， 所以需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。 
@@ -414,11 +410,15 @@ func backtrack(nums []int, start int, target int) {
 **明确 base case -> 明确「状态」-> 明确「选择」 -> 定义 dp 数组/函数的含义**
 
 ![img](../assets/1649555679467-c3a46ec1-6bab-4f89-9b86-001db983844b.png)
-
+经典题型：
 ![img](../assets/1650247498541-e98d8786-5004-45c4-9789-6b1db8e507cb.jpeg)
+
+
 
 # 数学相关
 
-## 凸包问题
+# 其他
 
-常见的凸包算法有多种： Jarvis 算法、 Graham 算法、 Andrew 算法
+## 自动机
+
+确定有限状态自动机

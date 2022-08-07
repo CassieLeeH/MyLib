@@ -523,7 +523,9 @@ func (s IntSlice) Less(i, j int) bool { return s[i] < s[j] }
 
 sort.Sort(IntSlice(nums))
 
-![img](../assets/1647149971923-ba67f81a-f32f-44b0-9858-cfe224c4f010.png)![img](../assets/1647149972457-560847e9-6efb-4dcb-8cec-6c8b7eddc46d.png)
+![img](../assets/1647149971923-ba67f81a-f32f-44b0-9858-cfe224c4f010.png)
+
+![img](../assets/1647149972457-560847e9-6efb-4dcb-8cec-6c8b7eddc46d.png)
 
 切片排序
 

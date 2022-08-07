@@ -8,8 +8,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String s = br.readLine();// 单行读取
+
 String[] s = br.readLine().split(" ");//按“ ”划分
-int n = Integer.parseInt(s[0]);//第一个值为n
+int n = Integer.parseInt(s[0]);// 第一个值为由string转为int n
 int x = Integer.parseInt(s[1]);
 int y = Integer.parseInt(s[2]);
 ```
@@ -22,6 +24,7 @@ int y = Integer.parseInt(s[2]);
 
 ```java
 //待补充 
+sout
 System.out.println(n);
 ```
 
@@ -135,6 +138,110 @@ deque.peekFirst();
 deque.peekLast();
 
 ```
+
+# 容器
+
+## Arrays
+
+```java
+// 初始化
+int[] a = new int[10];
+
+// 排序
+Arrays.sort(a);  // 1 默认排序，升序
+Arrays.sort(a, firstIdx, lastIdx);  // 2 指定位置进行排序，默认升序，排序区间为左闭右开 [firstIdx, lastIdx)
+Arrays.sort(b, new Comparator<Integer>() {  
+  // 3 自定义的形式排序
+  public int compare(Integer o1, Integer o2) {
+    return o2 - o1;
+  }
+});
+Arrays.sort(b, firstIdx, lastIdx, new Comparator<Integer>() {  
+  // 4 指定位置进行自定义排序
+  public int compare(Integer o1, Integer o2) {
+    return o2 - o1;
+  }
+});
+// 由于 Java 8 后有 Lambda 表达式，第三个重载及第四个重载亦可写为 
+Arrays.sort(b, (x, y) -> {  // 5 同3
+  return y - x;
+});
+Arrays.sort(b, (x, y) -> {  // 6 同4
+  return y - x;
+});
+
+// Arrays.binarySearch() 是对数组连续区间进行二分搜索的方法，前提是数组必须有序；
+Arrays.binarySearch(a, key); 
+Arrays.binarySearch(a, firstIdx, lastIdx, key);  
+
+// Arrays.fill() 将数组中连续位置的元素赋值为统一元素
+Arrays.fill(a,2,5,100); 
+//其接受的参数为数组、fromIndex、toIndex 和需要填充的数。
+                                                                     
+```
+
+
+## Set
+
+`Set` 是保持容器中的元素不重复的一种数据结构。
+
+```java
+// 随机位置插入的 Set
+Set<Integer> s1 = new HashSet<>();
+// 保持插入顺序的 Set
+Set<Integer> s2 = new LinkedHashSet<>();
+// 保持容器中元素有序的 Set，默认为升序
+Set<Integer> s3 = new TreeSet<>();
+Set<Integer> s4 = new TreeSet<>((x, y) -> {return y - x;});  // 降序 
+// 遍历
+for (int key : s1) {
+  //
+}
+```
+
+常用方法：
+
+|          函数名           |                   功能                   |
+| :-----------------------: | :--------------------------------------: |
+|         `size()`          |             返回 this 的长度             |
+|    `add(Integer val)`     |           插入一个元素进 this            |
+|  `contains(Integer val)`  |        判断 this 中是否有元素 val        |
+|  `addAll(Collection e)`   |    将一个容器里的所有元素添加进 this     |
+| `retainAll(Collection e)` | 将 this 改为两个容器内相同的元素（查重） |
+| `removeAll(Collection e)` |      将 this 中与 e 相同的元素删除       |
+
+## Map
+
+`Map` 是维护键值对 `<Key, Value>` 的一种数据结构，其中 `Key` 唯一。
+
+```java
+
+//随机位置插入的 Map
+Map<Integer, Integer> map1 = new HashMap<>();
+//保持插入顺序的 Map
+Map<Integer, Integer> map2 = new LinkedHashMap<>();
+//保持 key 有序的 Map，默认升序。
+Map<Integer, Integer> map3 = new TreeMap<>();
+Map<Integer, Integer> map4 = new TreeMap<>((x, y) -> {return y - x;});  // 降序
+
+//遍历
+for (int key : map1.keySet()) {
+	//
+}
+
+```
+
+常用方法：
+
+|              函数名               |                 功能                  |
+| :-------------------------------: | :-----------------------------------: |
+| `put(Integer key, Integer value)` |          插入一个元素进 this          |
+|             `size()`              |           返回 this 的长度            |
+|    `containsKey(Integer val)`     |   判断 this 中是否有元素 key 为 val   |
+|        `get(Integer key)`         |  将 this 中对应的 key 的 value 返回   |
+|             `keySet`              | 将 this 中所有元素的 key 作为集合返回 |
+
+
 
 # String类方法
 
@@ -267,134 +374,7 @@ public class Test {
 oj题解收集，学习java解题风格
 
 ```java
-import java.util.*;
 
-public class Main{
-    public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
-        int N = scanner.nextInt();
-        //每个数位各不相同且各个数位之和等于N——1+2+3+4+5+6+7+8+9 = 45，如果大于45一定会重复
-        if(N > 45){
-            System.out.println(-1);
-            return;
-        }
-        //如果N<10，可以直接返回数字本身
-        if(N < 10){
-            System.out.println(N);
-            return;
-        }
-        //右侧数位越大，越能保证左侧数位越小，越能保证整个数最小
-        int nums = 0;
-        int digit = 0;
-        for(int i = 9; i>0; i--){
-            if(N != 0 && i <= N){
-                N -= i;
-                nums += (int)Math.pow(10,digit)*i;
-                digit++;
-            }
-        }
-        System.out.println(nums);
-    }
-}
-
-
-import java.util.Scanner;
-import java.util.Arrays;
-public class Main {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        in.nextLine();
-        String a = in.nextLine();
-        String b = in.nextLine();
-        char[] chA = a.toCharArray();
-        char[] chB = b.toCharArray();
-        Arrays.sort(chA);
-        Arrays.sort(chB);
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += Math.abs(chA[i] - chB[i]);
-        }
-        System.out.println(sum);
-    }
-}
-
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
- 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] params = br.readLine().split(" ");
-        int n = Integer.parseInt(params[0]);
-        int m = Integer.parseInt(params[1]);
-        int[] map = new int[m];       // 除以m的余数为0~m-1
-        params = br.readLine().split(" ");
-        int[] A = new int[n];
-        map[0] = 1;
-        long culSum = 0L;
-        long count = 0L;
-        for(int i = 0; i < n; i++) {
-            A[i] = Integer.parseInt(params[i]);
-            culSum += A[i];
-            int remain = (int)(culSum % m);
-            count += map[remain];
-            map[remain] ++;
-        }
-        System.out.println(count);
-    }
-}
-
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
- 
-/**
- * @author Ticsmyc
- * @date 2021-03-07 22:29
- */
-public class Main {
- 
- 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] s = br.readLine().split(" ");
-        int n = Integer.parseInt(s[0]);
-        int x=Integer.parseInt(s[1]);
-        int y=Integer.parseInt(s[2]);
-        int[] arr = new int[n];
-        s=br.readLine().split(" ");
-        for(int i=0; i <arr.length;++i){
-            arr[i]=Integer.parseInt(s[i]);
-        }
- 
-        Arrays.sort(arr);
- 
-        //范围
-        if( n<2*x || n>2*y){
-            System.out.println(-1);
-            return;
-        }
- 
-        //二分淘汰人数
-        int left = x;
-        int right = y+1;
-        while(left < right){
-            int mid = left+(right-left)/2;
-            if(n-mid >=x || n-mid <=y){
-                right =mid;
-            }else{
-                left =mid+1;
-            }
-        }
-        System.out.println(arr[left-1]);
-    }
-
-}
 
 
 import java.io.BufferedReader;

@@ -67,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 216.5
+    "width": 283.5
   },
   "right": {
     "id": "0e31dc5d387be3be",
@@ -114,14 +114,14 @@
   "active": "b56feb46fe2324be",
   "lastOpenFiles": [
     "05 算法笔记/(Java)刷题语法整理.md",
-    "02 Java/Java 基础.md",
+    "04 数据库/数据库 MySQL.md",
     "05 算法笔记/(Java)算法笔记.md",
+    "05 算法笔记/Golang相关/(Golang)算法笔记.md",
+    "05 算法笔记/Golang相关/go刷题语法整理.md",
     "05 算法笔记/排序算法.md",
-    "03 计算机基础/计算机网络.md",
+    "02 Java/Java JVM.md",
+    "02 Java/Java 基础.md",
     "02 Java/Java 多线程.md",
-    "02 Java/Java 集合.md",
-    "03 计算机基础/设计模式.md",
-    "03 计算机基础/操作系统.md",
-    "02 Java/Java JVM.md"
+    "04 数据库/数据库 Redis.md"
   ]
 }
