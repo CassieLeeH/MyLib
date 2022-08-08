@@ -1,6 +1,6 @@
 # 基本概念
-## NoSQL
 
+## NoSQL
 NoSQL(NoSQL = Not Only SQL )，意即“不仅仅是SQL”，泛指非关系型的数据库
 **NoSQL特点**
 1.非关系型数据库，不依赖业务逻辑数据库存储，以简单key-value存储。增加了数据库的扩展能力，远超sql的性能。
