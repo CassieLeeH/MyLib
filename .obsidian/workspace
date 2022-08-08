@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "05 算法笔记/(Java)算法笔记.md",
+            "file": "00 面试相关/自我介绍.md",
             "mode": "source",
             "source": false
           }
@@ -24,7 +24,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "05 算法笔记/(Java)算法笔记.md"
+            "file": "00 面试相关/自我介绍.md"
           }
         },
         "group": "cd845b150cc92b65"
@@ -83,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "05 算法笔记/(Java)算法笔记.md",
+                "file": "00 面试相关/自我介绍.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "05 算法笔记/(Java)算法笔记.md"
+                "file": "00 面试相关/自我介绍.md"
               }
             }
           }
@@ -113,15 +113,15 @@
   },
   "active": "b56feb46fe2324be",
   "lastOpenFiles": [
-    "05 算法笔记/(Java)刷题语法整理.md",
-    "04 数据库/数据库 MySQL.md",
-    "05 算法笔记/(Java)算法笔记.md",
-    "05 算法笔记/Golang相关/(Golang)算法笔记.md",
-    "05 算法笔记/Golang相关/go刷题语法整理.md",
-    "05 算法笔记/排序算法.md",
-    "02 Java/Java JVM.md",
+    "06 中间件/消息队列/Kafka.md",
+    "07 工具类/Docker.md",
     "02 Java/Java 基础.md",
-    "02 Java/Java 多线程.md",
-    "04 数据库/数据库 Redis.md"
+    "00 面试相关/简历.md",
+    "01 Golang/(Golang) 基础.md",
+    "00 面试相关/李凯欣 中南大学 后端.pdf",
+    "05 算法笔记/(Java)刷题语法整理.md",
+    "05 算法笔记/Golang相关/go刷题语法整理.md",
+    "01 Golang/并发.md",
+    "02 Java/Java JVM.md"
   ]
 }
