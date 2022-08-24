@@ -36,6 +36,7 @@ as-if-serial 保证单线程程序的执行结果不变，happens-before 保证�
 
 
 # 并发关键词
+
 ## Synchronized
 **底层实现原理**
 Java 对象底层都关联一个的 monitor，使用 synchronized 时 JVM 会根据使用环境找到对象的 monitor，根据 monitor 的状态进行加解锁的判断。如果成功加锁就成为该 monitor 的唯一持有者， monitor 在被释放前不能再被其他线程获取。
@@ -78,6 +79,7 @@ ReentrantLock 比 synchronized 增加了一些高级功能
 ThreadLocal类主要解决的就是让每个线程绑定自己的值，可以将ThreadLocal类形象的比喻成存放数据的盒子，盒子中可以存储每个线程的私有数据。
 举个简单的例子：两个人去宝屋收集宝物，这两个共用一个袋子的话肯定会产生争执，但是给他们两个人每个人分配一个袋子的话就不会出现这样的问题。如果把这两个人比作线程的话，那么 ThreadLocal 就是用来避免这两个线程竞争的。
 如果你创建了一个ThreadLocal变量，那么访问这个变量的每个线程都会有这个变量的本地副本，这也是ThreadLocal变量名的由来。他们可以使用 get() 和 set() 方法来获取默认值或将其值更改为当前线程所存的副本的值，从而避免了线程安全问题。
+
 ## 谈一谈ThreadLocal  
 ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是ThreadLocal 对象，值是 Entry 对象，ThreadLocalMap是每个线程私有的。
 - set 给ThreadLocalMap设置值。  
@@ -114,6 +116,18 @@ atomicInteger.incrementAndGet(); //执行自增1
 
 
 ```
+
+## JAVA中的乐观锁与CAS算法
+
+对于乐观锁，开发者认为数据发送时发生并发冲突的概率不大，所以读操作前不上锁。
+到了写操作时才会进行判断，数据在此期间是否被其他线程修改。如果发生修改，那就返回写入失败;
+如果没有被修改，那就执行修改操作，返回修改成功。
+乐观锁一般都采用 Compare And Swap(CAS)算法进行实现。顾名思义，该算法涉及到了两个操作， 比较(Compare)和交换(Swap)。
+CAS 算法的思路如下:
+1. 该算法认为不同线程对变量的操作时产生竞争的情况比较少。  
+2. 该算法的核心是对当前读取变量值 E 和内存中的变量旧值 V 进行比较。  
+3. 如果相等，就代表其他线程没有对该变量进行修改，就将变量值更新为新值 N。  
+4. 如果不等，就认为在读取值 E 到比较阶段，有其他线程对变量进行过修改，不进行任何操作。
 
 ## 自旋锁 、适应性自旋锁
 ## java的自旋锁  
@@ -179,6 +193,13 @@ TERMINATED:结束状态。线程调用完run方法进入该状态。
 2. synchronized关键词。确保多个线程在同一时刻只能有一个处于方法或同步块中。 3. wait/notify方法  
 4. IO通信
 
+## 线程池类型
+1.  newCachedThreadPool 可缓存线程池，可设置最小线程数和最大线程数，线程空闲1分钟后自动销 毁。   
+2.  newFixedThreadPool 指定工作线程数量线程池。
+3.  newSingleThreadExecutor 单线程Executor。
+4.  newScheduleThreadPool 支持定时任务的指定工作线程数量线程池。
+5.  newSingleThreadScheduledExecutor 支持定时任务的单线程Executor。
+
 ## 简述线程池
 没有线程池的情况下，多次创建，销毁线程开销比较大。如果在开辟的线程执行完当前任务后执行接下
 来任务，复用已创建的线程，降低开销、控制最大并发数。
@@ -228,7 +249,19 @@ ThreadPoolExecutor:继承ThreadPoolExecutor，实现ScheduledExecutorService，�
 
 
 # 并发容器
-## 简述ConcurrentHashMap  
+
+## 简述阻塞队列
+阻塞队列是生产者消费者的实现具体组件之一。当阻塞队列为空时，从队列中获取元素的操作将会被阻
+塞，当阻塞队列满了，往队列添加元素的操作将会被阻塞。具体实现有:
+ArrayBlockingQueue:底层是由数组组成的有界阻塞队列。 
+LinkedBlockingQueue:底层是由链表组成的有界阻塞队列。 
+PriorityBlockingQueue:阻塞优先队列。 
+DelayQueue:创建元素时可以指定多久才能从队列中获取当前元素 
+SynchronousQueue:不存储元素的阻塞队列，每一个存储必须等待一个取出操作 
+LinkedTransferQueue:与LinkedBlockingQueue相比多一个transfer方法，即如果当前有消费者正 等待接收元素，可以把生产者传入的元素立刻传输给消费者。 
+LinkedBlockingDeque:双向阻塞队列。
+
+## ConcurrentHashMap  
 JDK7采用锁分段技术。首先将数据分成 Segment 数据段，然后给每一个数据段配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。
 get 除读到空值不需要加锁。该方法先经过一次再散列，再用这个散列值通过散列运算定位到Segment，最后通过散列算法定位到元素。  
 put 须加锁，首先定位到 Segment，然后进行插入操作，第一步判断是否需要对 Segment 里的HashEntry 数组进行扩容，第二步定位添加元素的位置，然后将其放入数组。
@@ -240,51 +273,26 @@ JDK8的改进：
 
 
 # AQS
+## 简述AQS
+AQS(AbstractQuenedSynchronizer)抽象的队列式同步器。 AQS是将每一条请求共享资源的线程封装成一个锁队列的一个结点(Node)，来实现锁的分配。 AQS是用来构建锁或其他同步组件的基础框架，它使用一个 volatile int state 变量作为共享资源，如果 线程获取资源失败，则进入同步队列等待;如果获取成功就执行临界区代码，释放资源时会通知同步队 列中的等待线程。
+子类通过继承同步器并实现它的抽象方法getState、setState 和 compareAndSetState对同步状态进行 更改。
 
+## AQS获取独占锁/释放独占锁原理 
+获取:(acquire)
+1. 调用 tryAcquire 方法安全地获取线程同步状态，获取失败的线程会被构造同步节点并通过 addWaiter 方法加入到同步队列的尾部，在队列中自旋。
+2. 调用 acquireQueued 方法使得该节点以死循环的方式获取同步状态，如果获取不到则阻塞。 
+释放:(release)
+1. 调用 tryRelease 方法释放同步状态  
+2. 调用 unparkSuccessor 方法唤醒头节点的后继节点，使后继节点重新尝试获取同步状态。
 
-
+## AQS获取共享锁/释放共享锁原理 
+获取锁(acquireShared)
+- 调用 tryAcquireShared 方法尝试获取同步状态，返回值不小于 0 表示能获取同步状态。 
+释放(releaseShared)
+- 释放，并唤醒后续处于等待状态的节点。
 
 
 # Atomic 原子类
-
-
-
-
-
-## 简述阻塞队列
-
-阻塞队列是生产者消费者的实现具体组件之一。当阻塞队列为空时，从队列中获取元素的操作将会被阻
-塞，当阻塞队列满了，往队列添加元素的操作将会被阻塞。具体实现有:
-ArrayBlockingQueue:底层是由数组组成的有界阻塞队列。 
-LinkedBlockingQueue:底层是由链表组成的有界阻塞队列。 
-PriorityBlockingQueue:阻塞优先队列。 
-DelayQueue:创建元素时可以指定多久才能从队列中获取当前元素 
-SynchronousQueue:不存储元素的阻塞队列，每一个存储必须等待一个取出操作 
-LinkedTransferQueue:与LinkedBlockingQueue相比多一个transfer方法，即如果当前有消费者正 等待接收元素，可以把生产者传入的元素立刻传输给消费者。 
-LinkedBlockingDeque:双向阻塞队列。
-
-
-
-## 聊聊你对java并发包下unsafe类的理解  
-对于 Java 语言，没有直接的指针组件，一般也不能使用偏移量对某块内存进行操作。这些操作相对来讲是安全(safe)的。  
-Java 有个类叫 Unsafe 类，这个类类使 Java 拥有了像 C 语言的指针一样操作内存空间的能力，同时也带来了指针的问题。这个类可以说是 Java 并发开发的基础。 
-
-## JAVA中的乐观锁与CAS算法
-
-对于乐观锁，开发者认为数据发送时发生并发冲突的概率不大，所以读操作前不上锁。
-到了写操作时才会进行判断，数据在此期间是否被其他线程修改。如果发生修改，那就返回写入失败;
-如果没有被修改，那就执行修改操作，返回修改成功。
-乐观锁一般都采用 Compare And Swap(CAS)算法进行实现。顾名思义，该算法涉及到了两个操作， 比较(Compare)和交换(Swap)。
-CAS 算法的思路如下:
-1. 该算法认为不同线程对变量的操作时产生竞争的情况比较少。  
-2. 该算法的核心是对当前读取变量值 E 和内存中的变量旧值 V 进行比较。  
-3. 如果相等，就代表其他线程没有对该变量进行修改，就将变量值更新为新值 N。  
-4. 如果不等，就认为在读取值 E 到比较阶段，有其他线程对变量进行过修改，不进行任何操作。
-
-## ABA问题及解决方法简述
-CAS 算法是基于值来做比较的，如果当前有两个线程，一个线程将变量值从 A 改为 B ，再由 B 改回为 A ，当前线程开始执行 CAS 算法时，就很容易认为值没有变化，误认为读取数据到执行 CAS 算法的期 间，没有线程修改过数据。
-juc 包提供了一个 AtomicStampedReference，即在原始的版本下加入版本号戳，解决 ABA 问题。 
-
 ## 简述常见的Atomic类
 在很多时候，我们需要的仅仅是一个简单的、高效的、线程安全的++或者--方案，使用synchronized关 键字和lock固然可以实现，但代价比较大，此时用原子类更加方便。  
 基本数据类型的原子类有:
@@ -313,6 +321,27 @@ FieldUpdater类型:
 5. 如果等于则说明当前值没有被其他线程修改，则将值更新为 next，  
 6. 如果不是会更新失败返回 false，程序会进入 for 循环重新进行 compareAndSet 操作。
 
+
+
+
+
+
+
+
+
+
+
+## 聊聊你对java并发包下unsafe类的理解  
+对于 Java 语言，没有直接的指针组件，一般也不能使用偏移量对某块内存进行操作。这些操作相对来讲是安全(safe)的。  
+Java 有个类叫 Unsafe 类，这个类类使 Java 拥有了像 C 语言的指针一样操作内存空间的能力，同时也带来了指针的问题。这个类可以说是 Java 并发开发的基础。 
+
+
+## ABA问题及解决方法简述
+CAS 算法是基于值来做比较的，如果当前有两个线程，一个线程将变量值从 A 改为 B ，再由 B 改回为 A ，当前线程开始执行 CAS 算法时，就很容易认为值没有变化，误认为读取数据到执行 CAS 算法的期 间，没有线程修改过数据。
+juc 包提供了一个 AtomicStampedReference，即在原始的版本下加入版本号戳，解决 ABA 问题。 
+
+
+
 ## 简述CountDownLatch
 countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。 是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线 程就可以恢复工作了。
 只能一次性使用，不能reset。 
@@ -332,31 +361,6 @@ Exchanger类可用于两个线程之间交换信息。可简单地将Exchanger�
 
 可重入锁 ReentrantLock 是 Lock 最常见的实现，与 synchronized 一样可重入。ReentrantLock 在默认 情况下是非公平的，可以通过构造方法指定公平锁。一旦使用了公平锁，性能会下降。
 
-## 简述AQS
-
-AQS(AbstractQuenedSynchronizer)抽象的队列式同步器。 AQS是将每一条请求共享资源的线程封装成一个锁队列的一个结点(Node)，来实现锁的分配。 AQS是用来构建锁或其他同步组件的基础框架，它使用一个 volatile int state 变量作为共享资源，如果 线程获取资源失败，则进入同步队列等待;如果获取成功就执行临界区代码，释放资源时会通知同步队 列中的等待线程。
-子类通过继承同步器并实现它的抽象方法getState、setState 和 compareAndSetState对同步状态进行 更改。
-
-## AQS获取独占锁/释放独占锁原理 
-获取:(acquire)
-1. 调用 tryAcquire 方法安全地获取线程同步状态，获取失败的线程会被构造同步节点并通过 addWaiter 方法加入到同步队列的尾部，在队列中自旋。
-2. 调用 acquireQueued 方法使得该节点以死循环的方式获取同步状态，如果获取不到则阻塞。 
-释放:(release)
-1. 调用 tryRelease 方法释放同步状态  
-2. 调用 unparkSuccessor 方法唤醒头节点的后继节点，使后继节点重新尝试获取同步状态。
-
-## AQS获取共享锁/释放共享锁原理 
-获取锁(acquireShared)
-- 调用 tryAcquireShared 方法尝试获取同步状态，返回值不小于 0 表示能获取同步状态。 
-释放(releaseShared)
-- 释放，并唤醒后续处于等待状态的节点。
-
-##线程池类型
-1.  newCachedThreadPool 可缓存线程池，可设置最小线程数和最大线程数，线程空闲1分钟后自动销 毁。   
-2.  newFixedThreadPool 指定工作线程数量线程池。
-3.  newSingleThreadExecutor 单线程Executor。
-4.  newScheduleThreadPool 支持定时任务的指定工作线程数量线程池。
-5.  newSingleThreadScheduledExecutor 支持定时任务的单线程Executor。
 
 
-## 线程池是如何实现的？简述线程池的任务策略
+
