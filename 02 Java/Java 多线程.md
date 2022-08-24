@@ -274,8 +274,10 @@ JDK8的改进：
 
 # AQS
 ## 简述AQS
-AQS(AbstractQuenedSynchronizer)抽象的队列式同步器。 AQS是将每一条请求共享资源的线程封装成一个锁队列的一个结点(Node)，来实现锁的分配。 AQS是用来构建锁或其他同步组件的基础框架，它使用一个 volatile int state 变量作为共享资源，如果 线程获取资源失败，则进入同步队列等待;如果获取成功就执行临界区代码，释放资源时会通知同步队 列中的等待线程。
-子类通过继承同步器并实现它的抽象方法getState、setState 和 compareAndSetState对同步状态进行 更改。
+AQS(AbstractQuenedSynchronizer)抽象的队列式同步器。 
+AQS是将每一条请求共享资源的线程封装成一个锁队列的一个结点(Node)，来实现锁的分配。 
+AQS是用来构建锁或其他同步组件的基础框架，它使用一个 volatile int state 变量作为共享资源，如果 线程获取资源失败，则进入同步队列等待;如果获取成功就执行临界区代码，释放资源时会通知同步队列中的等待线程。
+子类通过继承同步器并实现它的抽象方法getState、setState 和 compareAndSetState对同步状态进行更改。
 
 ## AQS获取独占锁/释放独占锁原理 
 获取:(acquire)
@@ -291,6 +293,12 @@ AQS(AbstractQuenedSynchronizer)抽象的队列式同步器。 AQS是将每一条
 释放(releaseShared)
 - 释放，并唤醒后续处于等待状态的节点。
 
+## CountDownLatch
+countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。 是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线 程就可以恢复工作了。
+只能一次性使用，不能reset。 
+
+## CyclicBarrier
+CyclicBarrier 主要功能和countDownLatch类似，也是通过一个计数器，使一个线程等待其他线程各自 执行完毕后再执行。但是其可以重复使用(reset)。
 
 # Atomic 原子类
 ## 简述常见的Atomic类
@@ -329,7 +337,7 @@ FieldUpdater类型:
 
 
 
-
+# 其他
 
 ## 聊聊你对java并发包下unsafe类的理解  
 对于 Java 语言，没有直接的指针组件，一般也不能使用偏移量对某块内存进行操作。这些操作相对来讲是安全(safe)的。  
@@ -341,25 +349,12 @@ CAS 算法是基于值来做比较的，如果当前有两个线程，一个线�
 juc 包提供了一个 AtomicStampedReference，即在原始的版本下加入版本号戳，解决 ABA 问题。 
 
 
-
-## 简述CountDownLatch
-countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。 是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线 程就可以恢复工作了。
-只能一次性使用，不能reset。 
-
-## 简述CyclicBarrier
-CyclicBarrier 主要功能和countDownLatch类似，也是通过一个计数器，使一个线程等待其他线程各自 执行完毕后再执行。但是其可以重复使用(reset)。
-
 ## 简述Semaphore
 Semaphore即信号量。  
 Semaphore 的构造方法参数接收一个 int 值，设置一个计数器，表示可用的许可数量即最大并发数。使 用 acquire 方法获得一个许可证，计数器减一，使用 release 方法归还许可，计数器加一。如果此时计 数器值为0,线程进入休眠。
 
 ## 简述Exchanger
 Exchanger类可用于两个线程之间交换信息。可简单地将Exchanger对象理解为一个包含两个格子的容 器，通过exchanger方法可以向两个格子中填充信息。线程通过exchange 方法交换数据，第一个线程执 行 exchange 方法后会阻塞等待第二个线程执行该方法。当两个线程都到达同步点时这两个线程就可以 交换数据当两个格子中的均被填充时，该对象会自动将两个格子的信息交换，然后返回给线程，从而实 现两个线程的信息交换。
-
-
-## 简述Lock与ReentrantLock Lock 接是 java并发包的顶层接口。
-
-可重入锁 ReentrantLock 是 Lock 最常见的实现，与 synchronized 一样可重入。ReentrantLock 在默认 情况下是非公平的，可以通过构造方法指定公平锁。一旦使用了公平锁，性能会下降。
 
 
 
