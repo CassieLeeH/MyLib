@@ -78,7 +78,14 @@ ReentrantLock 比 synchronized 增加了一些高级功能
 ThreadLocal类主要解决的就是让每个线程绑定自己的值，可以将ThreadLocal类形象的比喻成存放数据的盒子，盒子中可以存储每个线程的私有数据。
 举个简单的例子：两个人去宝屋收集宝物，这两个共用一个袋子的话肯定会产生争执，但是给他们两个人每个人分配一个袋子的话就不会出现这样的问题。如果把这两个人比作线程的话，那么 ThreadLocal 就是用来避免这两个线程竞争的。
 如果你创建了一个ThreadLocal变量，那么访问这个变量的每个线程都会有这个变量的本地副本，这也是ThreadLocal变量名的由来。他们可以使用 get() 和 set() 方法来获取默认值或将其值更改为当前线程所存的副本的值，从而避免了线程安全问题。
-
+## 谈一谈ThreadLocal  
+ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是ThreadLocal 对象，值是 Entry 对象，ThreadLocalMap是每个线程私有的。
+- set 给ThreadLocalMap设置值。  
+- get 获取ThreadLocalMap。  
+- remove 删除ThreadLocalMap类型的对象。
+存在的问题
+1.  对于线程池，由于线程池会重用 Thread 对象，因此与 Thread 绑定的 ThreadLocal 也会被重用， 造成一系列问题。
+2.  内存泄漏。由于 ThreadLocal 是弱引用，但 Entry 的 value 是强引用，因此当 ThreadLocal 被垃圾 回收后，value 依旧不会被释放，产生内存泄漏。
 
 # Java 锁
 ![Pasted image 20220728231929](../assets/Pasted%20image%2020220728231929.png)
@@ -109,24 +116,21 @@ atomicInteger.incrementAndGet(); //执行自增1
 ```
 
 ## 自旋锁 、适应性自旋锁
+## java的自旋锁  
+线程获取锁失败后，可以采用这样的策略，可以不放弃 CPU ，不停的重试内重试，这种操作也称为自旋锁。
 
+## 自适应自旋锁
+自适应自旋锁自旋次数不再人为设定，通常由前一次在同一个锁上的自旋时间及锁的拥有者的状态决
+定。
 ## 无锁 、偏向锁 、轻量级锁 、 重量级锁
-
-## 公平锁、非公平锁
-
-## 可重入锁、非可重入锁
-
-## 独享锁(排他锁)、共享锁
-## 简述java偏向锁
-
+### java偏向锁
 JDK 1.6 中提出了偏向锁的概念。该锁提出的原因是，开发者发现多数情况下锁并不存在竞争，一把锁 往往是由同一个线程获得的。偏向锁并不会主动释放，这样每次偏向锁进入的时候都会判断该资源是否 是偏向自己的，如果是偏向自己的则不需要进行额外的操作，直接可以进入同步操作。
 其申请流程为:
 1.  首先需要判断对象的 Mark Word 是否属于偏向模式，如果不属于，那就进入轻量级锁判断逻辑。 否则继续下一步判断;
 2.  判断目前请求锁的线程 ID 是否和偏向锁本身记录的线程 ID 一致。如果一致，继续下一步的判断， 如果不一致，跳转到步骤4;
 3.  判断是否需要重偏向。如果不用的话，直接获得偏向锁;
 4.  利用 CAS 算法将对象的 Mark Word 进行更改，使线程 ID 部分换成本线程 ID。如果更换成功，则重偏向完成，获得偏向锁。如果失败，则说明有多线程竞争，升级为轻量级锁。
-
-## 简述轻量级锁
+### 轻量级锁
 轻量级锁是为了在没有竞争的前提下减少重量级锁出现并导致的性能消耗。
 其申请流程为:
 1.  如果同步对象没有被锁定，虚拟机将在当前线程的栈帧中建立一个锁记录空间，存储锁对象目前 Mark Word 的拷贝。
@@ -137,25 +141,21 @@ JDK 1.6 中提出了偏向锁的概念。该锁提出的原因是，开发者发
 5.  如果指向当前线程的栈帧，说明当前线程已经拥有了锁，直接进入同步块继续执行
 6.  如果不是则说明锁对象已经被其他线程抢占。
 7.  如果出现两条以上线程争用同一个锁，轻量级锁就不再有效，将膨胀为重量级锁，锁标志状态变为10，此时Mark Word 存储的就是指向重量级锁的指针，后面等待锁的线程也必须阻塞。
+## 公平锁、非公平锁
+
+## 可重入锁、非可重入锁
+
+## 独享锁(排他锁)、共享锁
+
     
-## 简述锁优化策略
+## 锁优化策略
 即自适应自旋、锁消除、锁粗化、锁升级等策略偏。
 
-## 简述java的自旋锁  
-线程获取锁失败后，可以采用这样的策略，可以不放弃 CPU ，不停的重试内重试，这种操作也称为自旋锁。
-
-## 简述自适应自旋锁
-自适应自旋锁自旋次数不再人为设定，通常由前一次在同一个锁上的自旋时间及锁的拥有者的状态决
-定。
-
-## 简述锁粗化
-
+## 锁粗化
 锁粗化的思想就是扩大加锁范围，避免反复的加锁和解锁。
 
-## 简述锁消除
-
+## 锁消除
 锁消除是一种更为彻底的优化，在编译时，java编译器对运行上下文进行扫描，去除不可能存在共享资 源竞争的锁。
-
 
 
 
@@ -212,9 +212,22 @@ Terminated:线程池彻底终止。在tidying模式下调用terminated方法会�
 3. newCachedThreadPool，maximumPoolSize 设置为 Integer 最大值，工作完成后会回收工作线程 4. newScheduledThreadPool:支持定期及周期性任务执行，不回收工作线程。  
 5. newWorkStealingPool:一个拥有多个任务队列的线程池。
 
+## Executor框架
+
+Executor框架目的是将任务提交和任务如何运行分离开来的机制。用户不再需要从代码层考虑设计任务 的提交运行，只需要调用Executor框架实现类的Execute方法就可以提交任务。产生线程池的函数 ThreadPoolExecutor也是Executor的具体实现类。
+
+## Executor的继承关系
+
+Executor:一个接口，其定义了一个接收Runnable对象的方法executor，该方法接收一个Runable 实例执行这个任务。 
+ExecutorService:Executor的子类接口，其定义了一个接收Callable对象的方法，返回 Future 对象，同时提供execute方法。
+ScheduledExecutorService:ExecutorService的子类接口，支持定期执行任务。 AbstractExecutorService:抽象类，提供 ExecutorService 执行方法的默认实现。 
+Executors:实现ExecutorService接口的静态工厂类，提供了一系列工厂方法用于创建线程池。 ThreadPoolExecutor:继承AbstractExecutorService，用于创建线程池。
+ForkJoinPool: 继承AbstractExecutorService，Fork 将大任务分叉为多个小任务，然后让小任务执 行，Join 是获得小任务的结果，类似于map reduce。 
+ThreadPoolExecutor:继承ThreadPoolExecutor，实现ScheduledExecutorService，用于创建带定 时任务的线程池。
 
 
 
+# 并发容器
 ## 简述ConcurrentHashMap  
 JDK7采用锁分段技术。首先将数据分成 Segment 数据段，然后给每一个数据段配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。
 get 除读到空值不需要加锁。该方法先经过一次再散列，再用这个散列值通过散列运算定位到Segment，最后通过散列算法定位到元素。  
@@ -226,19 +239,15 @@ JDK8的改进：
 
 
 
+# AQS
 
-## 简述Executor框架
 
-Executor框架目的是将任务提交和任务如何运行分离开来的机制。用户不再需要从代码层考虑设计任务 的提交运行，只需要调用Executor框架实现类的Execute方法就可以提交任务。产生线程池的函数 ThreadPoolExecutor也是Executor的具体实现类。
 
-## 简述Executor的继承关系
 
-Executor:一个接口，其定义了一个接收Runnable对象的方法executor，该方法接收一个Runable 实例执行这个任务。 
-ExecutorService:Executor的子类接口，其定义了一个接收Callable对象的方法，返回 Future 对象，同时提供execute方法。
-ScheduledExecutorService:ExecutorService的子类接口，支持定期执行任务。 AbstractExecutorService:抽象类，提供 ExecutorService 执行方法的默认实现。 
-Executors:实现ExecutorService接口的静态工厂类，提供了一系列工厂方法用于创建线程池。 ThreadPoolExecutor:继承AbstractExecutorService，用于创建线程池。
-ForkJoinPool: 继承AbstractExecutorService，Fork 将大任务分叉为多个小任务，然后让小任务执 行，Join 是获得小任务的结果，类似于map reduce。 
-ThreadPoolExecutor:继承ThreadPoolExecutor，实现ScheduledExecutorService，用于创建带定 时任务的线程池。
+
+# Atomic 原子类
+
+
 
 
 
@@ -254,14 +263,7 @@ SynchronousQueue:不存储元素的阻塞队列，每一个存储必须等待一
 LinkedTransferQueue:与LinkedBlockingQueue相比多一个transfer方法，即如果当前有消费者正 等待接收元素，可以把生产者传入的元素立刻传输给消费者。 
 LinkedBlockingDeque:双向阻塞队列。
 
-## 谈一谈ThreadLocal  
-ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是ThreadLocal 对象，值是 Entry 对象，ThreadLocalMap是每个线程私有的。
-- set 给ThreadLocalMap设置值。  
-- get 获取ThreadLocalMap。  
-- remove 删除ThreadLocalMap类型的对象。
-存在的问题
-1.  对于线程池，由于线程池会重用 Thread 对象，因此与 Thread 绑定的 ThreadLocal 也会被重用， 造成一系列问题。
-2.  内存泄漏。由于 ThreadLocal 是弱引用，但 Entry 的 value 是强引用，因此当 ThreadLocal 被垃圾 回收后，value 依旧不会被释放，产生内存泄漏。
+
 
 ## 聊聊你对java并发包下unsafe类的理解  
 对于 Java 语言，没有直接的指针组件，一般也不能使用偏移量对某块内存进行操作。这些操作相对来讲是安全(safe)的。  
