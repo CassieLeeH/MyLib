@@ -4,30 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "b56feb46fe2324be",
-        "type": "leaf",
-        "dimension": 74.75247524752476,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "04 数据库/数据库 MySQL.md",
-            "mode": "source",
-            "source": false
-          }
-        },
-        "group": "cd845b150cc92b65"
-      },
-      {
         "id": "9cb6b24f3989805a",
         "type": "leaf",
-        "dimension": 25.247524752475247,
         "state": {
           "type": "outline",
           "state": {
-            "file": "04 数据库/数据库 MySQL.md"
+            "file": "01 Golang/(Golang) 基础.md"
           }
-        },
-        "group": "cd845b150cc92b65"
+        }
       }
     ],
     "direction": "vertical"
@@ -83,7 +67,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "04 数据库/数据库 MySQL.md",
+                "file": "01 Golang/(Golang) 基础.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +84,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04 数据库/数据库 MySQL.md"
+                "file": "01 Golang/(Golang) 基础.md"
               }
             }
           }
@@ -111,17 +95,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b56feb46fe2324be",
+  "active": "9cb6b24f3989805a",
   "lastOpenFiles": [
-    "04 数据库/数据库 Redis.md",
-    "04 数据库/Redis.md",
+    "02 Java/Java 多线程.md",
     "04 数据库/数据库 MySQL.md",
-    "02 Java/Java JVM.md",
-    "06 中间件/消息队列/Kafka.md",
-    "00 面试相关/自我介绍.md",
-    "00 面试相关/简历.pdf",
-    "00 面试相关/简历.md",
-    "02 Java/Java 集合.md",
-    "07 工具类/Docker.md"
+    "05 算法笔记/(Java)刷题语法整理.md",
+    "秋招进度记录.md",
+    "05 算法笔记/(Java)算法笔记.md",
+    "简历.pdf",
+    "README.md",
+    "01 Golang/(Golang) 基础.md",
+    "01 Golang/并发.md",
+    "00 面试相关/简历.md"
   ]
 }
