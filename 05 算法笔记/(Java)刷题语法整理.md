@@ -147,6 +147,12 @@ deque.peekLast();
 // 初始化
 int[] a = new int[10];
 
+// 长度
+arrays.length
+// 转换为字符串
+arrays.toString()
+
+
 // 排序
 Arrays.sort(a);  // 1 默认排序，升序
 Arrays.sort(a, firstIdx, lastIdx);  // 2 指定位置进行排序，默认升序，排序区间为左闭右开 [firstIdx, lastIdx)
@@ -229,6 +235,9 @@ for (int key : map1.keySet()) {
 	//
 }
 
+//当Map[集合]中有这个key时，就使用这个key对应的value值，如果没有就使用默认值defaultValue
+getOrDefault(Object key, V defaultValue)  
+
 ```
 
 常用方法：
@@ -246,16 +255,19 @@ for (int key : map1.keySet()) {
 # String类方法
 
 ```java
-
 String name;
+// 用于字符串拼接
+StringBuilder sb = new StringBuilder();
+
 //获取字符串长度
 name.length());
+
 //指定字符在此字符串中第一次出现的索引
 name.indexOf('z'));
 name.indexOf("zhj");
 name.indexOf("zhj",0);//fromIndex指从哪边开始第一个出现
 
-//"指定字符在此字符串中最后一次出现的索引");
+//"指定字符在此字符串中最后一次出现的索引";
 name.lastIndexOf('z');
 name.lastIndexOf("zhj");
 name.lastIndexOf("zhj",5);//fromIndex指从哪边结束的最后一个出现
@@ -263,6 +275,7 @@ name.charAt(0);//返回对应索引上的字符
 
 // 重复n次
 name.repeat(n);
+
 //将字符串转换为字符数组
 name.toCharArray();
 
@@ -272,22 +285,31 @@ String.valueOf(123);
 //将String中所有字符变成小写/大写
 name.toLowerCase();
 name.toUpperCase();
+
 //用新的str代替旧的str
 name.replace("zhj","xxx");
 
 String trim1 ="  zhj 123  ";
 // 除去字符串前后空格
 trim1.trim();
+
 // 用特定规则分割字符串，比如','
 String str1 = "aa,bb,cc";
 String[] split1 = str1.split(",");
-for (int i = 0; i <split1.length ; i++) {
+for (int i = 0; i < split1.length ; i++) {
 	System.out.println(split1[i]);
 }
+// 或者
+for (String s: str1.split(SEP)) {  
+	、、、
+}
+
 
 // 截取字符,从beginIndex开始，包括第一个,不包括最后一个
 name.substring(1);
 name.substring(0,1);
+
+
 // 比较两个字符串是否相等
 String name2 = "ZHJ";
 name.equals(name2));//false

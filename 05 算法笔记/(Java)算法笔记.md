@@ -1,10 +1,8 @@
 # 数组
-## 前缀和与差分数组
+## 前缀和
 
 \303. 区域和检索 - 数组不可变（中等） 
-
 \304. ⼆维区域和检索 - 矩阵不可变（中等） 
-
 \560. 和为K的⼦数组（中等） 
 
 **前缀和主要适⽤的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和的情况。**
@@ -23,7 +21,7 @@
 
 **的 for 循环。我们可以⽤哈希表**，在记录前缀和的同时记录该前缀和出现的次数。
 
-**差分数组**
+## 差分数组
 
 \370. 区间加法（中等） 
 
@@ -82,7 +80,42 @@ public int BinarySearch(int[] nums,int target){
 
 ## 滑动窗口
 
-![img](../assets/1649593147122-04fd825b-579d-42d1-8c49-d4f7b34ddbba.png)
+时间复杂度: O(N)
+```JAVA
+/* 滑动窗口算法框架 */
+void slidingWindow(string s) {
+    HashMap<char, int> window = new HashMap<>();
+    
+    int left = 0, right = 0;
+    while (right < s.length() {
+        // c 是将移入窗口的字符
+	    char c = s.charAt(right);
+        // 增大窗口
+        right++;
+        // 进行窗口内数据的一系列更新
+        ...
+
+        /*** debug 输出的位置 ***/
+        printf("window: [%d, %d)\n", left, right);
+        /********************/
+        
+        // 判断左侧窗口是否要收缩
+        while (window needs shrink) {
+            // d 是将移出窗口的字符
+            char d = s.charAt(left);
+            // 缩小窗口
+            left++;
+            // 进行窗口内数据的一系列更新
+            ...
+        }
+    }
+}
+
+```
+**其中两处 `...` 表示的更新窗口数据的地方，直接往里面填就行了**。
+而且，这两个 `...` 处的操作分别是扩大和缩小窗口的更新操作，它们操作是完全对称的。
+
+
 
 # 队列/栈
 
@@ -256,9 +289,68 @@ class Solution {
 
 
 ## 二叉树的序列化
+297. 二叉树的序列化与反序列化
+```java
+public class _297_SerializeAndDeserialize {  
+  
+    String SEP = ",";  
+    String NUL = "null";  
+  
+    // Encodes a tree to a single string.  
+    public String serialize(TreeNode root) {  
+        StringBuffer sb = new StringBuffer();  
+        traverse(root,sb);  
+        return sb.toString();  
+    }  
+  
+    /**  
+     * 前序遍历序列化  
+     * @param node  
+     * @param sb 字符串拼接  
+     */  
+    public void traverse(TreeNode node,StringBuffer sb){  
+        if (node == null){  
+            sb.append(NUL).append(SEP);  
+            return;        }  
+        // 前序遍历  
+        sb.append(node.val).append(SEP);  
+        traverse(node.left,sb);  
+        traverse(node.right,sb);  
+    }  
+  
+    // Decodes your encoded data to tree.  
+    public TreeNode deserialize(String data) {  
+        LinkedList<String> nodes = new LinkedList<>();  
+        // 去除逗号  
+        for (String s: data.split(SEP)) {  
+            nodes.addLast(s);  
+        }  
+        return deserialize(nodes);  
+    }  
+    //通过nodes构造二叉树  
+    private TreeNode deserialize(LinkedList<String> nodes){  
+        if (nodes.isEmpty()){  
+            return null;  
+        }  
+        // 前序遍历第一个就是根节点  
+        String first = nodes.removeFirst();  
+        if (first.equals(NUL)){  
+            return null;  
+        }  
+        TreeNode root = new TreeNode(Integer.parseInt(first));  
+        root.left = deserialize(nodes);  
+        root.right = deserialize(nodes);  
+        return root;  
+    }  
+  
+    public static void main(String[] args) {  
+        _297_SerializeAndDeserialize codec = new _297_SerializeAndDeserialize();  
+        TreeNode root = new TreeNode(1);  
+        codec.deserialize(codec.serialize(root));  
+    }  
+}
 
-\297. 二叉树的序列化与反序列化
-
+```
 
 
 ## 二叉搜索树
@@ -345,6 +437,8 @@ class Solution {
 ## 二分图判定
 
 ## Union-Find(并查集) 
+
+
 
 ## 最小生成树
 

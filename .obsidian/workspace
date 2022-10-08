@@ -4,12 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "9cb6b24f3989805a",
+        "id": "52da136eb5f358cf",
         "type": "leaf",
         "state": {
-          "type": "outline",
+          "type": "markdown",
           "state": {
-            "file": "01 Golang/(Golang) 基础.md"
+            "file": "02 Java/Java语法.md",
+            "mode": "source",
+            "source": false
           }
         }
       }
@@ -67,8 +69,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01 Golang/(Golang) 基础.md",
-                "collapseAll": false,
+                "file": "02 Java/Java语法.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -84,28 +86,28 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01 Golang/(Golang) 基础.md"
+                "file": "02 Java/Java语法.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 263.5
   },
-  "active": "9cb6b24f3989805a",
+  "active": "52da136eb5f358cf",
   "lastOpenFiles": [
-    "02 Java/Java 多线程.md",
-    "04 数据库/数据库 MySQL.md",
-    "05 算法笔记/(Java)刷题语法整理.md",
-    "秋招进度记录.md",
+    "02 Java/Java 基础.md",
+    "06 常用框架与中间件/Kafka.md",
+    "05 算法笔记/排序算法.md",
+    "03 计算机基础/设计模式/创建型.md",
     "05 算法笔记/(Java)算法笔记.md",
-    "简历.pdf",
-    "README.md",
-    "01 Golang/(Golang) 基础.md",
-    "01 Golang/并发.md",
-    "00 面试相关/简历.md"
+    "03 计算机基础/设计模式.md",
+    "03 计算机基础/数据结构.md",
+    "05 算法笔记/(Java)刷题语法整理.md",
+    "03 计算机基础/Linux.md",
+    "01 Golang/基于Gin框架和Gorm的日程清单项目.md"
   ]
 }
